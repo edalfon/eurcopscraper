@@ -1,0 +1,45 @@
+name: 'EUR -> COP Scraper'
+
+on:
+  workflow_dispatch:
+  # Every ten minutes https://crontab.cronhub.io/
+  # schedule:
+    #  - cron: "*/10 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  check-links:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
+
+      # https://github.com/r-lib/actions
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Install Puppeteer
+        run: npm i puppeteer
+
+      # How can I customize an action to run R code?
+      # The safest way is to add a step to your action, specifying 
+      # Rscript {0} as the shell for that step. 
+      # https://github.com/r-lib/actions
+      - name: Run R script
+        run: source("eurcopscraper.R")
+        shell: Rscript {0} 
+
+      - name: Commit files
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add --all
+          git commit -am "add data"
+          git push 
