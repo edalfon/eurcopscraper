@@ -12,7 +12,7 @@
 #'
 #' @return exchange rate (numeric) in terms of 1 currcard = X currtrans
 #' @export
-visaexchange <- function(exchgdate = as.Date(format(Sys.time(),
+visa <- function(exchgdate = as.Date(format(Sys.time(),
                          tz = "US/Pacific")),
                          currcard = "EUR", 
                          currtrans = "COP",
@@ -33,15 +33,24 @@ visaexchange <- function(exchgdate = as.Date(format(Sys.time(),
     "submitButton=Calculate+exchange+rate"
   )
   
+  # now the page asks to authorize cookies and puts a blank canvas that 
+  # does not let rvest to read the contents of the page. So we need to 
+  # authorize the cookies. 
+  # Using Chrome's developer tools -> Application -> Cookies, and comparing
+  # before and after authorizing, found this cookie name and value
+  # (the value also included a visitor and version parameters, but still works)
+  httr::set_config(httr::set_cookies(
+    wscrCookieConsent = "1=true&2=true&3=true&4=true&5=true"
+  ))
   rvested <- xml2::read_html(site_url)
   
-  card_amount <- rvested |>
+  rate <- rvested |>
     # CSS selector found using the awesome http://selectorgadget.com/
-    rvest::html_nodes(".converted-amount-value") |>
-    rvest::html_text() |>
-    readr::parse_number() #last or something
-  
-  rate <- trans_amount / card_amount
-  
+    # rvest::html_nodes("#er_result_table") |> #whole text, would need wrangling
+    rvest::html_nodes(".converted-amount-value:nth-child(6)") |>
+    rvest::html_text() |> # here it looks like "5,087.215217 Colombian Peso"
+    gsub(pattern = "[a-z]|,", replacement = "", ignore.case = TRUE) |>
+    as.numeric()
+    
   rate
 }

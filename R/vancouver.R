@@ -27,3 +27,49 @@ vancouver <- function() {
   
   exchangetable
 }
+
+
+
+
+#' OLD version Scraps currency exchange information from Cambios Vancouver
+#'
+#' Check out this link:
+#' http://www.cambiosvancouver.com/tasa-de-cambio-del-dia/
+#'
+#' @return exchange rate (numeric) in terms of COP/EUR
+#' @export
+#' @examples later
+#' later
+vancouverexchange <- function() {
+  
+  print("VANCOUVER ...")
+  
+  # scrap the information
+  rvested <- xml2::read_html("https://cambiosvancouver.com/tasas-del-dia/")
+  
+  ratesdf <- NULL
+  ratesdf$vancouver <- rvested |> 
+    # CSS selector found using the awesome http://selectorgadget.com/
+    # rvest::html_nodes("#page89_container54") |> OLD THEY UPDATE THE PAGE
+    rvest::html_nodes("tr:nth-child(3) td:nth-child(4)") |>
+    rvest::html_text() |>
+    gsub(pattern = ",", replacement = "") |>
+    gsub(pattern = "\\.", replacement = "") |>
+    gsub(pattern = "\\$", replacement = "") |>
+    stringr::str_trim() |>
+    as.numeric()
+  ratesdf$vancouver5 <- rvested |>
+    # CSS selector found using the awesome http://selectorgadget.com/
+    # rvest::html_nodes("#page89_container55") |>
+    rvest::html_nodes(".animated , tr:nth-child(4) td:nth-child(4)") |>
+    rvest::html_text() |>
+    gsub(pattern = ",", replacement = "") |>
+    gsub(pattern = "\\.", replacement = "") |>
+    gsub(pattern = "\\$", replacement = "") |>
+    stringr::str_trim() |>
+    as.numeric()
+  
+  ratesdf
+}
+
+

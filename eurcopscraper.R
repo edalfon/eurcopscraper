@@ -1,13 +1,15 @@
 # just to quickly test 
 
-source("R/vancouver.R")
+lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
 
-vancouver_table <- vancouver()
-vancouver_table$timestamp <- Sys.time()
+timestamp <- Sys.time()
 
-curr_data <- readRDS("data/vancouver.rds")
+vancouver_df <- vancouver()
+vancouver_df$timestamp <- timestamp
+appendRDS("data/vancouver.rds", vancouver_df)
 
-vancouver_table <- dplyr::bind_rows(vancouver_table, curr_data)
+visa_rate <- visa()
+visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
+appendRDS("data/visa.rds", visa_df)
 
-saveRDS(vancouver_table, "data/vancouver.rds")
 
