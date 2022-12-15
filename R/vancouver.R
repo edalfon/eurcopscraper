@@ -14,7 +14,7 @@ vancouver <- function() {
   # (e.g. new currency changes the order of the table), so let's scrape
   # now the whole table
   exchangetable <- rvest::html_table(rvested, convert = FALSE) |>
-    dplyr::bind_rows(tables) |> # for some reason, it gets two tables
+    dplyr::bind_rows() |> # for some reason, it gets two tables
     dplyr::distinct() |> # so let's just append them and remove duplicates
     dplyr::mutate(dplyr::across(.fns = ~ .x |> 
       gsub(.x, pattern = ",", replacement = "") |> 

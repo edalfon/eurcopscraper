@@ -3,7 +3,7 @@
 source("R/vancouver.R")
 
 vancouver_table <- vancouver()
-vancouver_table$time <- Sys.time()
+vancouver_table$timestamp <- Sys.time()
 
 curr_data <- readRDS("data/vancouver.rds")
 
