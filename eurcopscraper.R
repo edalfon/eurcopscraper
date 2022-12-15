@@ -12,4 +12,6 @@ visa_rate <- visa()
 visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
 appendRDS("data/visa.rds", visa_df)
 
+master_rate <- master()
+print(master_rate)
 
