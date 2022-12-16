@@ -23,16 +23,11 @@ master <- function(exchgdate = as.Date(format(Sys.time(),
   
   puppeteer_script <- "JS/master.js"
   
-  master <- system2(command = "node", args = puppeteer_script,
-                    stdout = TRUE) # , timeout = 120
-  
-  rate <- NA
-  #if (!any(grepl(x = master, pattern = "Error")) &
-  #    !stringi::stri_isempty(stringr::str_trim(master))) {
-  #  
-  #  rate <- 7777777 / readr::parse_number(master)
-  #}
-  
-  rate
-  
+  master_rate <- system2(command = "node", args = puppeteer_script, stdout = TRUE) # , timeout = 120
+  # TODO: let them fail
+
+  master_rate |>
+    paste(collapse = " ") |>
+    gsub(pattern = ",", replacement = "") |>
+    as.numeric()
 }
