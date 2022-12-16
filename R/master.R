@@ -27,11 +27,11 @@ master <- function(exchgdate = as.Date(format(Sys.time(),
                     stdout = TRUE) # , timeout = 120
   
   rate <- NA
-  if (!any(grepl(x = master, pattern = "Error")) &
-      !stringi::stri_isempty(stringr::str_trim(master))) {
-    
-    rate <- 7777777 / readr::parse_number(master)
-  }
+  #if (!any(grepl(x = master, pattern = "Error")) &
+  #    !stringi::stri_isempty(stringr::str_trim(master))) {
+  #  
+  #  rate <- 7777777 / readr::parse_number(master)
+  #}
   
   rate
   
