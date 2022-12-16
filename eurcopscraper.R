@@ -19,3 +19,7 @@ appendRDS("data/master.rds", master_df)
 condor_df <- condor()
 condor_df$timestamp <- timestamp
 appendRDS("data/condor.rds", condor_df)
+
+comdirect_df <- comdirect()
+comdirect_df$timestamp <- timestamp
+appendRDS("data/comdirect.rds", comdirect_df)

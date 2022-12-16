@@ -31,7 +31,7 @@ const puppeteer = require('puppeteer');
     // go to the mastercard page 
     await page.goto('https://www.mastercard.co.uk/en-gb/consumers/get-support/convert-currency.html');
   
-    await page.screenshot({ path: 'logs/master_0.png' });
+    //await page.screenshot({ path: 'logs/master_0.png' });
     
     // We need to get pass the cookies disclaimer, clicking the accept button
     await page.waitForSelector('#onetrust-accept-btn-handler');
@@ -43,7 +43,7 @@ const puppeteer = require('puppeteer');
     // specific DOM element, 'cause they are all already there
     await new Promise(r => setTimeout(r, 4000 + Math.random() * 3000));
     
-    await page.screenshot({ path: 'logs/master_1.png' });
+    //await page.screenshot({ path: 'logs/master_1.png' });
 
     //await page.waitFor(10); would fail
     // This did not work. 
@@ -81,7 +81,7 @@ const puppeteer = require('puppeteer');
     await new Promise(r => setTimeout(r, 4000 + Math.random() * 3000));
   
     // the screenshot should show feedback from the page that right part was clicked.
-    await page.screenshot({ path: 'logs/master_2.png' });
+    await page.screenshot({ path: 'logs/master.png' });
     
     // Finally we get the text (using selector)  
     await page.waitForSelector('#exchangeRateDiv .ng-binding+ .ng-binding')
