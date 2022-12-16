@@ -45,7 +45,7 @@ const puppeteer = require('puppeteer');
     
     await page.screenshot({ path: 'logs/master_1.png' });
 
-    await page.waitFor(10);
+    //await page.waitFor(10); would fail
     // This did not work. 
     //await page.select('#firstID', 'COLOMBIAN PESO � COP');
     //await page.select('#newID', 'EURO � EUR');
