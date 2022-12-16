@@ -34,8 +34,8 @@ const puppeteer = require('puppeteer');
     await page.screenshot({ path: 'logs/master_0.png' });
     
     // We need to get pass the cookies disclaimer, clicking the accept button
-    const element = await page.$('#onetrust-accept-btn-handler');
-    await element.click();
+    await page.waitForSelector('#onetrust-accept-btn-handler');
+    await page.click('#onetrust-accept-btn-handler');
     
     // They use some trick here, that I did not fully investigate, but after
     // accepting the disclaimer, the page refreshes with some lag.
