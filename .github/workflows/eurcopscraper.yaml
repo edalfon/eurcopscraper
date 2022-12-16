@@ -5,9 +5,9 @@ on:
   push:
     branches:
       - main
-  # At 0 minutes past the hour, every 3 hours https://crontab.cronhub.io/
+  # At 7 minutes past the hour, every 3 hours https://crontab.cronhub.io/
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "7 */3 * * *"
 
 permissions:
   contents: write

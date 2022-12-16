@@ -10,6 +10,12 @@ kapital <- function() {
   
   # scrap the information
   rvested <- xml2::read_html("https://cambioskapital.com/")
+  # this is just for the screenshot. Should we use this html to avoid two requests?
+  kapital_html <- system2(
+    command = "node", 
+    args = c("JS/screenshot.js", "https://cambioskapital.com/", "logs/kapital.png"), 
+    stdout = TRUE
+  )
 
   compra <- rvested |> 
     rvest::html_nodes(".banderpre1:nth-child(2) b") |>
