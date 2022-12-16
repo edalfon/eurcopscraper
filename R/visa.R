@@ -37,7 +37,9 @@ visa <- function(exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
   # now it's easier, just get a json
   visa_rates <- jsonlite::fromJSON(site_url)
   
-  visa_rates$reverseAmount
+  visa_rates$reverseAmount |>
+    gsub(pattern = ",", replacement = "") |>
+    as.numeric()
 }
 
 
