@@ -23,11 +23,18 @@ master <- function(exchgdate = as.Date(format(Sys.time(),
   
   puppeteer_script <- "JS/master.js"
   
-  master_rate <- system2(command = "node", args = puppeteer_script, stdout = TRUE) # , timeout = 120
+  # TODO: pass parameters
+  master_conv <- system2(command = "node", args = puppeteer_script, stdout = TRUE) # , timeout = 120
   # TODO: let them fail
 
-  master_rate |>
+  print(master_conv)
+
+  master_conv <- master_conv |>
     paste(collapse = " ") |>
-    gsub(pattern = ",", replacement = "") |>
+    gsub(pattern = "[a-z]|,", replacement = "", ignore.case = TRUE) |>
     as.numeric()
+
+  master_rate <- 7777777 / master_conv # this is hard coded in master.js
+
+  master_rate
 }
