@@ -23,3 +23,7 @@ appendRDS("data/condor.rds", condor_df)
 comdirect_df <- comdirect()
 comdirect_df$timestamp <- timestamp
 appendRDS("data/comdirect.rds", comdirect_df)
+
+kapital_df <- kapital()
+kapital_df$timestamp <- timestamp
+appendRDS("data/kapital.rds", kapital_df)
