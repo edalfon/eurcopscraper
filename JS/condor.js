@@ -15,6 +15,8 @@ const puppeteer = require('puppeteer');
     // go to the mastercard page 
     await page.goto('http://www.elcondorcambios.com/');
   
+    await new Promise(r => setTimeout(r, 4000 + Math.random() * 3000));
+    
     await page.screenshot({ path: 'logs/condor.png' });
 
     let bodyHTML = await page.evaluate(() => document.body.innerHTML);
