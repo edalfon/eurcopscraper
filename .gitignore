@@ -40,3 +40,4 @@ vignettes/*.pdf
 
 # puppeteer's cache, which includes chromium and it's therefore huge
 .cache
+node_modules
