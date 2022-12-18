@@ -1,0 +1,108 @@
+---
+title: ""
+---
+
+```{r}
+#| echo: false
+# TODO: refactor this into a fn
+vancouver_df <- readRDS("data/vancouver.rds") |> 
+  dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
+  dplyr::mutate(source = paste0("Vancouver ", moneda)) |> 
+  dplyr::select(timestamp, source, rate = valor_venta)
+
+visa_df <- readRDS("data/visa.rds") |> 
+  dplyr::mutate(source = "Visa") |> 
+  dplyr::select(timestamp, source, rate = visa_rate)
+
+master_df <- readRDS("data/master.rds") |> 
+  dplyr::mutate(source = "Master") |> 
+  dplyr::select(timestamp, source, rate = master_rate)
+
+condor_df <- readRDS("data/condor.rds") |> 
+  dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
+  dplyr::mutate(source = paste0("Condor ", moneda)) |> 
+  dplyr::select(timestamp, source, rate = venta)
+
+comdirect_df <- readRDS("data/comdirect.rds") |> 
+  dplyr::filter(iso == "COP")  |> 
+  dplyr::mutate(source = "Comdirect") |> 
+  dplyr::select(timestamp, source, rate = geld)
+
+kapital_df <- readRDS("data/kapital.rds") |> 
+  dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
+  dplyr::mutate(source = paste0("Kapital ", moneda)) |> 
+  dplyr::select(timestamp, source, rate = venta)
+
+eurcop_df <- dplyr::bind_rows(
+  vancouver_df, visa_df, master_df, condor_df, 
+  comdirect_df, kapital_df
+) |> 
+  dplyr::group_by(timestamp) |> 
+  dplyr::mutate(
+    spread = max(rate, na.rm = TRUE) - min(rate, na.rm = TRUE)
+  )  |> 
+  dplyr::ungroup()
+
+```
+
+
+
+
+```{r}
+#| echo: false
+
+rates_df <- eurcop_df |> 
+  dplyr::select(-spread) |> 
+  tidyr::pivot_wider(names_from = source, values_from = rate)
+
+rates_xts <- xts::xts(
+  x = rates_df|> dplyr::select(-timestamp), 
+  order.by = rates_df$timestamp
+)
+
+rates_dy <- dygraphs::dygraph(
+  	data = rates_xts,
+  	group = "eurcop_plot") |> 
+	dygraphs::dyLegend(width = 700) |>
+  	dygraphs::dyOptions(drawPoints = TRUE, pointSize = 2) |>
+  	dygraphs::dyRangeSelector() |>
+  	dygraphs::dyHighlight(highlightCircleSize = 5,
+  						  highlightSeriesBackgroundAlpha = 0.3,
+  						  hideOnMouseOut = TRUE)
+
+rates_dy$x$css <- 
+  ".dygraph-legend > span {display:none;}
+   .dygraph-legend > span.highlight { display: inline; float: right}
+  "
+rates_dy
+```
+
+
+```{r}
+#| echo: false
+
+spread_df <- eurcop_df |> 
+  dplyr::select(-rate) |> 
+  tidyr::pivot_wider(names_from = source, values_from = spread)
+
+spread_xts <- xts::xts(
+  x = spread_df|> dplyr::select(-timestamp), 
+  order.by = spread_df$timestamp
+)
+
+spread_dy <- dygraphs::dygraph(
+  	data = spread_xts,
+  	group = "eurcop_plot") |> 
+	dygraphs::dyLegend(width = 700) |>
+  	dygraphs::dyOptions(drawPoints = TRUE, pointSize = 2) |>
+  	dygraphs::dyRangeSelector() |>
+  	dygraphs::dyHighlight(highlightCircleSize = 5,
+  						  highlightSeriesBackgroundAlpha = 0.3,
+  						  hideOnMouseOut = TRUE)
+
+spread_dy$x$css <- 
+  ".dygraph-legend > span {display:none;}
+   .dygraph-legend > span.highlight { display: inline; float: right}
+  "
+spread_dy
+```

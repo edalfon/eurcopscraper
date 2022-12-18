@@ -27,3 +27,7 @@ appendRDS("data/comdirect.rds", comdirect_df)
 kapital_df <- kapital()
 kapital_df$timestamp <- timestamp
 appendRDS("data/kapital.rds", kapital_df)
+
+
+quarto::quarto_render("quarto", as_job = FALSE, execute_dir = ".")
+
