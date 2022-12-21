@@ -35,6 +35,7 @@ const puppeteer = require('puppeteer');
     
     // We need to get pass the cookies disclaimer, clicking the accept button
     await page.waitForSelector('#onetrust-accept-btn-handler');
+    await new Promise(r => setTimeout(r, 4000 + Math.random() * 3000));
     await page.click('#onetrust-accept-btn-handler');
     
     // They use some trick here, that I did not fully investigate, but after
