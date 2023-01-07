@@ -26,7 +26,7 @@ jobs:
           cache: npm
 
       - name: Run apt-get update
-        run: apt-get update
+        run: sudo apt-get update
         
       - name: Install libcurl4
         run: sudo apt-get install libcurl4-openssl-dev
