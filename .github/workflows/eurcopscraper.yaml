@@ -26,6 +26,7 @@ jobs:
           cache: npm
 
       - name: Install libcurl4
+        run: apt-get update
         run: sudo apt-get install libcurl4-openssl-dev
 
       # https://github.com/r-lib/actions
