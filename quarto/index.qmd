@@ -47,6 +47,7 @@ eurcop_df <- dplyr::bind_rows(
 
 
 ```{r}
+#| label: rates-dygraphs-plot
 #| echo: false
 
 rates_df <- eurcop_df |> 
@@ -82,6 +83,7 @@ rates_dy
 
 
 ```{r}
+#| label: spread-dygraphs-plot
 #| echo: false
 
 spread_df <- eurcop_df |> 
