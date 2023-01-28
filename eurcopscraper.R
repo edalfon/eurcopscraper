@@ -29,5 +29,5 @@ kapital_df$timestamp <- timestamp
 appendRDS("data/kapital.rds", kapital_df)
 
 
-#quarto::quarto_render("quarto", as_job = FALSE, execute_dir = ".")
+quarto::quarto_render("quarto", as_job = FALSE, execute_dir = ".")
 
