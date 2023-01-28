@@ -45,6 +45,14 @@ eurcop_df <- dplyr::bind_rows(
 ```
 
 
+```{r}
+eurcop_df |> 
+dplyr::select(-spread)  |> 
+dplyr::group_by(timestamp, source) |> 
+dplyr::mutate(n = dplyr::n()) |> 
+View()
+```
+
 
 ```{r}
 #| label: rates-dygraphs-plot
@@ -52,7 +60,14 @@ eurcop_df <- dplyr::bind_rows(
 
 rates_df <- eurcop_df |> 
   dplyr::select(-spread) |> 
-  tidyr::pivot_wider(names_from = source, values_from = rate)
+  tidyr::pivot_wider(
+    names_from = source, 
+    values_from = rate, 
+    values_fn = mean # to deal with those cases where id_cols and names_from 
+    # columns does not uniquely identify an observation. Not sure how it 
+    # happened, but there are a few where we have for the same source,
+    # more than one observation with the same timestamp
+  )
 
 rates_xts <- xts::xts(
   x = rates_df |> dplyr::select(-timestamp) |> as.data.frame(), 
@@ -88,7 +103,11 @@ rates_dy
 
 spread_df <- eurcop_df |> 
   dplyr::select(-rate) |> 
-  tidyr::pivot_wider(names_from = source, values_from = spread)
+  tidyr::pivot_wider(
+    names_from = source, 
+    values_from = spread, 
+    values_fn = mean
+  )
 
 spread_xts <- xts::xts(
   x = spread_df|> dplyr::select(-timestamp), 
