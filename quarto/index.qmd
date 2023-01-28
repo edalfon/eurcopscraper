@@ -43,17 +43,6 @@ eurcop_df <- dplyr::bind_rows(
   )  |> 
   dplyr::ungroup()
 ```
-
-
-```{r}
-eurcop_df |> 
-dplyr::select(-spread)  |> 
-dplyr::group_by(timestamp, source) |> 
-dplyr::mutate(n = dplyr::n()) |> 
-View()
-```
-
-
 ```{r}
 #| label: rates-dygraphs-plot
 #| echo: false
