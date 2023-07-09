@@ -143,63 +143,63 @@ visaexchange_old <- function(exchgdate = Sys.Date(),
 }
 
 
-visaexchange_old2 <- function(exchgdate = Sys.Date(),
-                              currcard = "EUR", currtrans = "COP") {
-  print("VISA ...")
+# visaexchange_old2 <- function(exchgdate = Sys.Date(),
+#                               currcard = "EUR", currtrans = "COP") {
+#   print("VISA ...")
   
-  library(RSelenium)
-  library(magrittr)
-  pJS <- phantom(pjs_cmd = system.file("phantomjs", "phantomjs",
-                                       package = "efunc")) # start phantomjs
-  remDr <- remoteDriver(browserName = "phantomjs")
-  remDr$open(silent = FALSE)
+#   library(RSelenium)
+#   library(magrittr)
+#   pJS <- phantom(pjs_cmd = system.file("phantomjs", "phantomjs",
+#                                        package = "efunc")) # start phantomjs
+#   remDr <- remoteDriver(browserName = "phantomjs")
+#   remDr$open(silent = FALSE)
   
-  appURL <- "https://www.visaeurope.com/making-payments/exchange-rates"
-  remDr$navigate(appURL)
+#   appURL <- "https://www.visaeurope.com/making-payments/exchange-rates"
+#   remDr$navigate(appURL)
   
-  remDr$findElement(
-    using = "xpath",
-    value = paste(
-      "//*[(@id = 'MainContent_MainContent_ctl00_ddlCardCurrency')]",
-      "/option[@value = '", currcard ,"']", sep = "")
-  )$clickElement()
+#   remDr$findElement(
+#     using = "xpath",
+#     value = paste(
+#       "//*[(@id = 'MainContent_MainContent_ctl00_ddlCardCurrency')]",
+#       "/option[@value = '", currcard ,"']", sep = "")
+#   )$clickElement()
   
-  remDr$findElement(
-    using = "xpath",
-    value = paste(
-      "//*[(@id = 'MainContent_MainContent_ctl00_ddlTransactionCurrency')]",
-      "/option[@value = '", currtrans ,"']", sep = "")
-  )$clickElement()
+#   remDr$findElement(
+#     using = "xpath",
+#     value = paste(
+#       "//*[(@id = 'MainContent_MainContent_ctl00_ddlTransactionCurrency')]",
+#       "/option[@value = '", currtrans ,"']", sep = "")
+#   )$clickElement()
   
-  remDr$findElement(
-    using = "id",
-    value = "MainContent_MainContent_ctl00_txtDate"
-  )$sendKeysToElement(list(selKeys$control, "a", selKeys$clear))
+#   remDr$findElement(
+#     using = "id",
+#     value = "MainContent_MainContent_ctl00_txtDate"
+#   )$sendKeysToElement(list(selKeys$control, "a", selKeys$clear))
   
-  remDr$findElement(
-    using = "id",
-    value = "MainContent_MainContent_ctl00_txtDate"
-  )$sendKeysToElement(list(format(exchgdate-11, "%d/%m/%Y")))
+#   remDr$findElement(
+#     using = "id",
+#     value = "MainContent_MainContent_ctl00_txtDate"
+#   )$sendKeysToElement(list(format(exchgdate-11, "%d/%m/%Y")))
   
-  remDr$findElement(
-    using = "id",
-    value = "MainContent_MainContent_ctl00_btnSubmit"
-  )$clickElement()
+#   remDr$findElement(
+#     using = "id",
+#     value = "MainContent_MainContent_ctl00_btnSubmit"
+#   )$clickElement()
   
   
-  #remDr$screenshot(display = TRUE, useViewer = TRUE, file = NULL)
+#   #remDr$screenshot(display = TRUE, useViewer = TRUE, file = NULL)
   
-  exchrate_value <- remDr$findElement(
-    using = "css selector",
-    value = ".text-center:nth-child(5) strong+ strong"
-  )$getElementText() %>%
-    gsub(pattern = ",", replacement = "") %>%
-    as.numeric()
+#   exchrate_value <- remDr$findElement(
+#     using = "css selector",
+#     value = ".text-center:nth-child(5) strong+ strong"
+#   )$getElementText() %>%
+#     gsub(pattern = ",", replacement = "") %>%
+#     as.numeric()
   
-  remDr$close()
+#   remDr$close()
   
-  exchrate_value
-}
+#   exchrate_value
+# }
 
 #' Scraps currency exchange information for transactions using credit cards
 #' issued by a Visa Europe bank.
@@ -217,41 +217,41 @@ visaexchange_old2 <- function(exchgdate = Sys.Date(),
 #' @export
 #' @examples later
 #' later
-visaexchange_old3 <- function(exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
-                              currcard = "EUR", currtrans = "COP") {
-  print("VISA ...")
+# visaexchange_old3 <- function(exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
+#                               currcard = "EUR", currtrans = "COP") {
+#   print("VISA ...")
   
-  site_url <- "https://www.visaeurope.com/making-payments/exchange-rates"
-  site_session <- rvest::html_session(url = site_url)
-  site_form <- rvest::html_form(site_session)[[1]]
-  site_form$url <- site_url
+#   site_url <- "https://www.visaeurope.com/making-payments/exchange-rates"
+#   site_session <- rvest::html_session(url = site_url)
+#   site_form <- rvest::html_form(site_session)[[1]]
+#   site_form$url <- site_url
   
-  site_form <- rvest::set_values(
-    form = site_form,
-    "ctl00$ctl00$MainContent$MainContent$ctl00$ddlCardCurrency" = currcard)
+#   site_form <- rvest::set_values(
+#     form = site_form,
+#     "ctl00$ctl00$MainContent$MainContent$ctl00$ddlCardCurrency" = currcard)
   
-  site_form <- rvest::set_values(
-    form = site_form,
-    "ctl00$ctl00$MainContent$MainContent$ctl00$ddlTransactionCurrency" =
-      currtrans)
+#   site_form <- rvest::set_values(
+#     form = site_form,
+#     "ctl00$ctl00$MainContent$MainContent$ctl00$ddlTransactionCurrency" =
+#       currtrans)
   
-  site_form <- rvest::set_values(
-    form = site_form,
-    "ctl00$ctl00$MainContent$MainContent$ctl00$txtDate" =
-      format(exchgdate, "%d/%m/%Y"))
+#   site_form <- rvest::set_values(
+#     form = site_form,
+#     "ctl00$ctl00$MainContent$MainContent$ctl00$txtDate" =
+#       format(exchgdate, "%d/%m/%Y"))
   
-  site_response <- rvest::submit_form(
-    session = site_session, form = site_form,
-    submit = "ctl00$ctl00$MainContent$MainContent$ctl00$btnSubmit")
+#   site_response <- rvest::submit_form(
+#     session = site_session, form = site_form,
+#     submit = "ctl00$ctl00$MainContent$MainContent$ctl00$btnSubmit")
   
-  library(magrittr)
+#   library(magrittr)
   
-  site_response %>%
-    rvest::html_nodes(".text-center:nth-child(5) strong+ strong") %>%
-    rvest::html_text() %>%
-    gsub(pattern = ",", replacement = "") %>%
-    as.numeric() %>%
-    ensurer::ensure_that(length(.)>0,
-                         err_desc = "Something went wrong with VISA")
-}
+#   site_response %>%
+#     rvest::html_nodes(".text-center:nth-child(5) strong+ strong") %>%
+#     rvest::html_text() %>%
+#     gsub(pattern = ",", replacement = "") %>%
+#     as.numeric() %>%
+#     ensurer::ensure_that(length(.)>0,
+#                          err_desc = "Something went wrong with VISA")
+# }
 
