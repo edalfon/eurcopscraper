@@ -63,8 +63,8 @@ const puppeteer = require('puppeteer');
     await page.waitForSelector('#cardCurrency')
     await page.click('#cardCurrency')
     
-    await page.waitForSelector('#mczRowD > .dropdown-block > .dropdown-menu > .ng-scope:nth-child(49) > .ng-binding')
-    await page.click('#mczRowD > .dropdown-block > .dropdown-menu > .ng-scope:nth-child(49) > .ng-binding')
+    await page.waitForSelector('#mczRowD > .dropdown-block > .dropdown-menu > .ng-scope:nth-child(48) > .ng-binding')
+    await page.click('#mczRowD > .dropdown-block > .dropdown-menu > .ng-scope:nth-child(48) > .ng-binding')
         
     
     await page.type('#BankFee', '0');
