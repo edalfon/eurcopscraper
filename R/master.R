@@ -80,3 +80,60 @@ master <- function(
   # master_rates$data$conversionRate
   trans_amount / master_rates$data$crdhldBillAmt
 }
+
+# At some point, master apparently introduced or removed
+# one currency, which ended-up breaking the scraping approach
+# It ended-up pulling the data from other currency. So we need
+# to fix the rates for the period between 
+# 2023-05-01 (the date where the change was introduced, infering it from the data) and 
+# 2023-09-07 (today, when I finally decided to fix the thing)
+one_time_fix <- function() {
+
+  master_data <- readRDS("data/master.rds")
+
+  library(dplyr)
+
+  # just want to validate. It seem reasonably close
+  probe_ok <- master_data |> slice(10)
+  probe_ok
+  master(as.Date(probe_ok$timestamp))
+
+  # would need to replace the value of these more than 500 obs
+  master_data  |> 
+    dplyr::filter(timestamp >= "2023-05-01")
+  
+  # I guess if I just run a loop, my IP will be blocked, so I'll take things slow
+  # First I will just invalidate those obs (assign NA to the rate value)
+  # And then slowly will replace some of the values
+  master_data_new <- master_data  |> 
+    mutate(master_rate = case_when(
+      timestamp > "2023-05-01" & timestamp <= "2023-07-09 16:30:45" ~ NA,
+      TRUE ~ master_rate
+    ))
+  
+  saveRDS(master_data_new, "data/master.rds")
+
+
+
+  # Now, with the latest data (remember to pull from github, to get the latest values updated by github actions)
+  # check which date have NA's and start replacing them, 
+  master_data <- readRDS("data/master.rds")
+
+  master_missing <- master_data  |> 
+    dplyr::filter(is.na(master_rate)) |> 
+    count(day = as.Date(timestamp))  
+  
+  # ok, they are not that many values. just 83 when you group them by date (without time)
+  master_replace <- master_missing |> 
+    slice_sample(n = 10) |> 
+    mutate(new_rate = purrr::map_dbl(day, ~master(.x)))
+
+  master_partially_fixed <- master_data |> 
+    mutate(day = as.Date(timestamp)) |> 
+    left_join(master_replace, by = "day") |> 
+    mutate(master_rate = coalesce(master_rate, new_rate)) |> 
+    select(-day, -new_rate, -n)
+
+  saveRDS(master_partially_fixed, "data/master.rds")
+
+}
