@@ -16,7 +16,7 @@ vancouver <- function() {
   exchangetable <- rvest::html_table(rvested, convert = FALSE) |>
     dplyr::bind_rows() |> # for some reason, it gets two tables
     dplyr::distinct() |> # so let's just append them and remove duplicates
-    dplyr::mutate(dplyr::across(.fns = ~ .x |> 
+    dplyr::mutate(dplyr::across(.cols = dplyr::everything(), .fns = ~ .x |> 
       gsub(.x, pattern = ",", replacement = "") |> 
       gsub(pattern = "\\.", replacement = "") |>
       gsub(pattern = "\\$", replacement = "") |>

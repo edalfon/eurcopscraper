@@ -4,6 +4,7 @@ title: ""
 
 ```{r}
 #| echo: false
+#| warning: false
 # TODO: refactor this into a fn
 vancouver_df <- readRDS("data/vancouver.rds") |> 
   dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
