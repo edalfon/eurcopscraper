@@ -5,5 +5,12 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "EUR COP Scraper",
+    "section": "",
+    "text": "Warning: There were 3 warnings in `dplyr::mutate()`.\nThe first warning was:\nℹ In argument: `spread = -...`.\nℹ In group 1: `timestamp = 2022-12-14 23:46:18`.\nCaused by warning in `max()`:\n! no non-missing arguments to max; returning -Inf\nℹ Run `dplyr::last_dplyr_warnings()` to see the 2 remaining warnings."
   }
 ]
