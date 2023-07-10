@@ -8,34 +8,41 @@ title: ""
 vancouver_df <- readRDS("data/vancouver.rds") |> 
   dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
   dplyr::mutate(source = paste0("Vancouver ", moneda)) |> 
-  dplyr::select(timestamp, source, rate = valor_venta)
+  dplyr::mutate(direction = "COP -> EUR") |> 
+  dplyr::select(timestamp, source, rate = valor_venta, direction)
 
 visa_df <- readRDS("data/visa.rds") |> 
   dplyr::mutate(source = "Visa") |> 
-  dplyr::select(timestamp, source, rate = visa_rate)
+  dplyr::mutate(direction = "EUR -> COP") |> 
+  dplyr::select(timestamp, source, rate = visa_rate, direction)
 
 master_df <- readRDS("data/master.rds") |> 
   dplyr::mutate(source = "Master") |> 
-  dplyr::select(timestamp, source, rate = master_rate)
+  dplyr::mutate(direction = "EUR -> COP") |> 
+  dplyr::select(timestamp, source, rate = master_rate, direction)
 
 nu_df <- readRDS("data/nu.rds") |> 
   dplyr::mutate(source = "Nu") |> 
-  dplyr::select(timestamp, source, rate = nu_rate)
+  dplyr::mutate(direction = "COP -> EUR") |> 
+  dplyr::select(timestamp, source, rate = nu_rate, direction)
 
 condor_df <- readRDS("data/condor.rds") |> 
   dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
   dplyr::mutate(source = paste0("Condor ", moneda)) |> 
-  dplyr::select(timestamp, source, rate = venta)
+  dplyr::mutate(direction = "COP -> EUR") |> 
+  dplyr::select(timestamp, source, rate = venta, direction)
 
 comdirect_df <- readRDS("data/comdirect.rds") |> 
   dplyr::filter(iso == "COP")  |> 
   dplyr::mutate(source = "Comdirect") |> 
-  dplyr::select(timestamp, source, rate = geld)
+  dplyr::mutate(direction = "EUR -> COP") |> 
+  dplyr::select(timestamp, source, rate = geld, direction)
 
 kapital_df <- readRDS("data/kapital.rds") |> 
   dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
   dplyr::mutate(source = paste0("Kapital ", moneda)) |> 
-  dplyr::select(timestamp, source, rate = venta)
+  dplyr::mutate(direction = "COP -> EUR") |> 
+  dplyr::select(timestamp, source, rate = venta, direction)
 
 eurcop_df <- dplyr::bind_rows(
   vancouver_df, visa_df, master_df, condor_df, 
@@ -43,7 +50,9 @@ eurcop_df <- dplyr::bind_rows(
 ) |> 
   dplyr::group_by(timestamp) |> 
   dplyr::mutate(
-    spread = max(rate, na.rm = TRUE) - min(rate, na.rm = TRUE)
+    spread = 
+      max(vctrs::vec_slice(rate, direction == "EUR -> COP"), na.rm = TRUE) - 
+      min(vctrs::vec_slice(rate, direction == "COP -> EUR"), na.rm = TRUE)
   )  |> 
   dplyr::ungroup()
 ```
@@ -52,7 +61,7 @@ eurcop_df <- dplyr::bind_rows(
 #| echo: false
 
 rates_df <- eurcop_df |> 
-  dplyr::select(-spread) |> 
+  dplyr::select(timestamp, source, rate) |> 
   tidyr::pivot_wider(
     names_from = source, 
     values_from = rate, 
@@ -95,12 +104,8 @@ rates_dy
 #| echo: false
 
 spread_df <- eurcop_df |> 
-  dplyr::select(-rate) |> 
-  tidyr::pivot_wider(
-    names_from = source, 
-    values_from = spread, 
-    values_fn = mean
-  )
+  dplyr::group_by(timestamp) |> 
+  dplyr::summarize(spread = mean(spread, na.rm = TRUE))
 
 spread_xts <- xts::xts(
   x = spread_df|> dplyr::select(-timestamp), 
