@@ -18,6 +18,10 @@ master_df <- readRDS("data/master.rds") |>
   dplyr::mutate(source = "Master") |> 
   dplyr::select(timestamp, source, rate = master_rate)
 
+nu_df <- readRDS("data/nu.rds") |> 
+  dplyr::mutate(source = "Nu") |> 
+  dplyr::select(timestamp, source, rate = nu_rate)
+
 condor_df <- readRDS("data/condor.rds") |> 
   dplyr::filter(stringr::str_detect(moneda, "EUR"))  |> 
   dplyr::mutate(source = paste0("Condor ", moneda)) |> 
@@ -35,7 +39,7 @@ kapital_df <- readRDS("data/kapital.rds") |>
 
 eurcop_df <- dplyr::bind_rows(
   vancouver_df, visa_df, master_df, condor_df, 
-  comdirect_df, kapital_df
+  comdirect_df, kapital_df, nu_df
 ) |> 
   dplyr::group_by(timestamp) |> 
   dplyr::mutate(

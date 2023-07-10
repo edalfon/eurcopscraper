@@ -137,3 +137,32 @@ one_time_fix <- function() {
   saveRDS(master_partially_fixed, "data/master.rds")
 
 }
+
+# we may also want to get the reverse COP - EUR and EUR - COP
+# But I did not do that before, so I would need to get the data from previous periods
+reverse_onetime <- function() {
+
+  # just to try, and since it's reversed, we need to do 1/x to make it comparable
+  1 / master(crdhldBillCurr = "COP", transCurr = "EUR")
+
+  # so let's get the data for the same days we have data for master
+  # using just the day, not the timestamp because the request is per day
+  master_data <- readRDS("data/master.rds")
+
+  master_days <- master_data  |> 
+    count(day = as.Date(timestamp))  
+
+  # we are gonna call this nu, because our nu card is a master card
+  # and would correspond to crdhldBillCurr = "COP", and transCurr EUR
+  # let's try all in one!, not sure if it will get blocked
+  master_nu <- master_days |> 
+    mutate(new_rate = purrr::map_dbl(day, ~master(.x, crdhldBillCurr = "COP", transCurr = "EUR")))
+
+  nu <- master_data |> 
+    mutate(day = as.Date(timestamp)) |> 
+    left_join(master_nu, by = "day") |> 
+    mutate(nu_rate = 1 / new_rate) |> 
+    select(-day, -new_rate, -n, -master_rate)
+
+  saveRDS(nu, "data/nu.rds")
+}
