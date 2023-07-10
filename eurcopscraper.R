@@ -16,7 +16,7 @@ master_rate <- master()
 master_df <- data.frame(master_rate = master_rate, timestamp = timestamp)
 appendRDS("data/master.rds", master_df)
 
-nu_rate <- master()
+nu_rate <- 1 / master(crdhldBillCurr = "COP", transCurr = "EUR")
 nu_df <- data.frame(nu_rate = nu_rate, timestamp = timestamp)
 appendRDS("data/nu.rds", nu_df)
 
