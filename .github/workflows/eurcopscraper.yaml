@@ -55,7 +55,27 @@ jobs:
           git commit -am "add data"
           git push 
 
-      - name: set notification message
-        run: |
-          echo "Found x.txt. Sending custom notification!"
-          export GITHUB_FAILURE_MESSAGE="Custom notification: x.txt found!"
+      - name: Send notification
+        uses: actions/github-script@v6
+        with:
+          script: |
+            # Install @octokit/rest (assuming npm is available)
+            npm install @octokit/rest
+
+            const octokit = require('@octokit/rest')({
+              token: process.env.GITHUB_TOKEN
+            });
+
+            # Replace 'owner' and 'repo' with your repository details
+            octokit.issues.create({
+              owner: 'edalfon',
+              repo: 'eurcopscraper',
+              title: 'Workflow Completed!',
+              body: 'The workflow has finished execution.'
+            })
+            .then((response) => {
+              console.log('Notification created:', response.data);
+            })
+            .catch((error) => {
+              console.error('Error creating notification:', error);
+            });
