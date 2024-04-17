@@ -54,3 +54,8 @@ jobs:
           git add --all
           git commit -am "add data"
           git push 
+
+      - name: set notification message
+        run: |
+          echo "Found x.txt. Sending custom notification!"
+          export GITHUB_FAILURE_MESSAGE="Custom notification: x.txt found!"
