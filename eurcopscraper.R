@@ -17,7 +17,10 @@ tryCatch(
     visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
     appendRDS("data/visa.rds", visa_df)
   },
-  error = \(e) cat("Visa Error:", conditionMessage(e), "\n")
+  error = \(e) cat(
+    Sys.time(), " Visa Error: ", conditionMessage(e), "\n",
+    file = "logs/errors.txt"
+  )
 )
 
 master_rate <- master()
