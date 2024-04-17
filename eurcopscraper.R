@@ -18,7 +18,7 @@ tryCatch(
     appendRDS("data/visa.rds", visa_df)
   },
   error = \(e) cat(
-    Sys.time(), " Visa Error: ", conditionMessage(e), "\n",
+    format(Sys.time()), " Visa Error: ", conditionMessage(e), "\n",
     file = "logs/errors.txt"
   )
 )
