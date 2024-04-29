@@ -14,15 +14,15 @@
 #' @export
 #' @examples later
 #' later
-master_puppeteer <- function(exchgdate = as.Date(format(Sys.time(), 
-                   tz = "US/Pacific")),
-                   currcard = "EUR", 
-                   currtrans = "COP") {
-  
+master_puppeteer <- function(exchgdate = as.Date(format(Sys.time(),
+                               tz = "US/Pacific"
+                             )),
+                             currcard = "EUR",
+                             currtrans = "COP") {
   print("I need node js installed (node in path) and puppeteer installed (npm i puppeteer) in the currency_scraping directory")
-  
+
   puppeteer_script <- "JS/master.js"
-  
+
   # TODO: pass parameters
   master_conv <- system2(command = "node", args = puppeteer_script, stdout = TRUE) # , timeout = 120
   # TODO: let them fail
@@ -43,7 +43,7 @@ master_puppeteer <- function(exchgdate = as.Date(format(Sys.time(),
 #' issued by a MasterCard Europe bank.
 #'
 #' This used to work by a simple GET request with a properly parametrized URL
-#' However, it stoped to work some time ago. So I had to move to a puppeteer 
+#' However, it stoped to work some time ago. So I had to move to a puppeteer
 #' based scraping approach.
 #'
 #' @param exchgdate transaction date, format YYYY-mm-dd
@@ -58,12 +58,10 @@ master_puppeteer <- function(exchgdate = as.Date(format(Sys.time(),
 #' later
 master <- function(
     exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
-    crdhldBillCurr = "EUR", 
+    crdhldBillCurr = "EUR",
     transCurr = "COP",
     bankFee = 0,
-    trans_amount = sample(1e6:9e6, 1)
-  ) {
-                  
+    trans_amount = sample(1e6:9e6, 1)) {
   # Luckily, you can AGAIN get the data with a properly parametrized get request
   site_url <- paste0(
     "https://www.mastercard.co.uk/settlement/currencyrate/conversion-rate?",
@@ -74,8 +72,15 @@ master <- function(
     "transAmt=", trans_amount
   )
 
-  # now it's easier, just get a json
-  master_rates <- jsonlite::fromJSON(site_url)
+  # sometimes it redirects to a maintainance page. That page is an html,
+  # then `resp_body_json` would fail. So just let it retry
+  master_rates <- httr2::request(site_url) |>
+    httr2::req_retry(
+      max_tries = 5,
+      is_transient = \(x) httr2::resp_content_type(x) != "application/json"
+    ) |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 
   # master_rates$data$conversionRate
   trans_amount / master_rates$data$crdhldBillAmt
@@ -84,11 +89,10 @@ master <- function(
 # At some point, master apparently introduced or removed
 # one currency, which ended-up breaking the scraping approach
 # It ended-up pulling the data from other currency. So we need
-# to fix the rates for the period between 
-# 2023-05-01 (the date where the change was introduced, infering it from the data) and 
+# to fix the rates for the period between
+# 2023-05-01 (the date where the change was introduced, infering it from the data) and
 # 2023-09-07 (today, when I finally decided to fix the thing)
 one_time_fix <- function() {
-
   master_data <- readRDS("data/master.rds")
 
   library(dplyr)
@@ -99,49 +103,47 @@ one_time_fix <- function() {
   master(as.Date(probe_ok$timestamp))
 
   # would need to replace the value of these more than 500 obs
-  master_data  |> 
+  master_data |>
     dplyr::filter(timestamp >= "2023-05-01")
-  
+
   # I guess if I just run a loop, my IP will be blocked, so I'll take things slow
   # First I will just invalidate those obs (assign NA to the rate value)
   # And then slowly will replace some of the values
-  master_data_new <- master_data  |> 
+  master_data_new <- master_data |>
     mutate(master_rate = case_when(
       timestamp > "2023-05-01" & timestamp <= "2023-07-09 16:30:45" ~ NA,
       TRUE ~ master_rate
     ))
-  
+
   saveRDS(master_data_new, "data/master.rds")
 
 
 
   # Now, with the latest data (remember to pull from github, to get the latest values updated by github actions)
-  # check which date have NA's and start replacing them, 
+  # check which date have NA's and start replacing them,
   master_data <- readRDS("data/master.rds")
 
-  master_missing <- master_data  |> 
-    dplyr::filter(is.na(master_rate)) |> 
-    count(day = as.Date(timestamp))  
-  
-  # ok, they are not that many values. just 83 when you group them by date (without time)
-  master_replace <- master_missing |> 
-    slice_sample(n = 10) |> 
-    mutate(new_rate = purrr::map_dbl(day, ~master(.x)))
+  master_missing <- master_data |>
+    dplyr::filter(is.na(master_rate)) |>
+    count(day = as.Date(timestamp))
 
-  master_partially_fixed <- master_data |> 
-    mutate(day = as.Date(timestamp)) |> 
-    left_join(master_replace, by = "day") |> 
-    mutate(master_rate = coalesce(master_rate, new_rate)) |> 
+  # ok, they are not that many values. just 83 when you group them by date (without time)
+  master_replace <- master_missing |>
+    slice_sample(n = 10) |>
+    mutate(new_rate = purrr::map_dbl(day, ~ master(.x)))
+
+  master_partially_fixed <- master_data |>
+    mutate(day = as.Date(timestamp)) |>
+    left_join(master_replace, by = "day") |>
+    mutate(master_rate = coalesce(master_rate, new_rate)) |>
     select(-day, -new_rate, -n)
 
   saveRDS(master_partially_fixed, "data/master.rds")
-
 }
 
 # we may also want to get the reverse COP - EUR and EUR - COP
 # But I did not do that before, so I would need to get the data from previous periods
 reverse_onetime <- function() {
-
   # just to try, and since it's reversed, we need to do 1/x to make it comparable
   1 / master(crdhldBillCurr = "COP", transCurr = "EUR")
 
@@ -149,19 +151,19 @@ reverse_onetime <- function() {
   # using just the day, not the timestamp because the request is per day
   master_data <- readRDS("data/master.rds")
 
-  master_days <- master_data  |> 
-    count(day = as.Date(timestamp))  
+  master_days <- master_data |>
+    count(day = as.Date(timestamp))
 
   # we are gonna call this nu, because our nu card is a master card
   # and would correspond to crdhldBillCurr = "COP", and transCurr EUR
   # let's try all in one!, not sure if it will get blocked
-  master_nu <- master_days |> 
-    mutate(new_rate = purrr::map_dbl(day, ~master(.x, crdhldBillCurr = "COP", transCurr = "EUR")))
+  master_nu <- master_days |>
+    mutate(new_rate = purrr::map_dbl(day, ~ master(.x, crdhldBillCurr = "COP", transCurr = "EUR")))
 
-  nu <- master_data |> 
-    mutate(day = as.Date(timestamp)) |> 
-    left_join(master_nu, by = "day") |> 
-    mutate(nu_rate = 1 / new_rate) |> 
+  nu <- master_data |>
+    mutate(day = as.Date(timestamp)) |>
+    left_join(master_nu, by = "day") |>
+    mutate(nu_rate = 1 / new_rate) |>
     select(-day, -new_rate, -n, -master_rate)
 
   saveRDS(nu, "data/nu.rds")

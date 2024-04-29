@@ -39,6 +39,10 @@ visa <- function(exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
   # with a 403 error
   visa_rates <- httr2::request(site_url) |>
     httr2::req_headers("User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36") |>
+    httr2::req_retry(
+      max_tries = 5,
+      is_transient = \(x) httr2::resp_content_type(x) != "application/json"
+    ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
 
