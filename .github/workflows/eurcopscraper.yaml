@@ -54,3 +54,10 @@ jobs:
           git add --all
           git commit -am "add data"
           git push 
+
+      - name: Check for failed.txt
+        run: |
+          if [ -f "logs/failed.txt" ]; then
+            echo "Error: logs/failed.txt exists, indicating a previous failure."
+            exit 1
+          fi
