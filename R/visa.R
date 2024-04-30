@@ -35,10 +35,9 @@ visa <- function(exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
 
   visa_html <- system2(
     command = "node",
-    args = c("JS/screenshot.js", site_url, "logs/visa.png"),
+    args = c("JS/screenshot.js", paste0("'", site_url, "'"), "logs/visa.png"),
     stdout = TRUE
   )
-
 
   # we cannot simply use jsonlite::fromJSON anymore, because it internally
   # uses base::url to fetch the data and does not let you configure much
