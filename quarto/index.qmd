@@ -10,7 +10,7 @@ lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
 ```{r}
 #| echo: false
 #| warning: false
- ingest_all_rds() |> 
+eurcop_df <- ingest_all_rds() |> 
   dplyr::group_by(timestamp) |> 
   dplyr::mutate(
     spread = 
