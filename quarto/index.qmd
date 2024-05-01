@@ -19,7 +19,7 @@ eurcop_df <- ingest_all_rds() |>
     EC = max(vctrs::vec_slice(rate, direction == "EUR -> COP"), na.rm = TRUE),
     CE = min(vctrs::vec_slice(rate, direction == "COP -> EUR"), na.rm = TRUE),
     spread = EC - CE,
-    spread_p = spread / CE
+    spread_p = 100 * (spread / CE) # EC/CE-1
   )  |> 
   # dplyr::mutate(
   #   spread = 
@@ -28,6 +28,10 @@ eurcop_df <- ingest_all_rds() |>
   # )  |> 
   dplyr::ungroup()
 ```
+
+## Row
+
+### Column {width="60%"}
 
 
 ```{r}
@@ -72,17 +76,51 @@ rates_dy$x$css <-
 rates_dy
 ```
 
+### Column {width="20%"}
+
+```{r}
+eurcop_df |> 
+dplyr::slice_max(order_by = timestamp, n = 1) |> 
+dplyr::filter(direction == "COP -> EUR") |> 
+dplyr::filter(!is.na(rate)) |> 
+dplyr::arrange(rate) |> 
+dplyr::select(source, rate)  |> 
+dplyr::mutate(rate = format(rate, big.mark = ",", digits = 1)) |> 
+knitr::kable()
+```
+
+### Column {width="20%"}
+
+```{r}
+eurcop_df |> 
+dplyr::slice_max(order_by = timestamp, n = 1) |> 
+dplyr::filter(direction == "EUR -> COP") |> 
+dplyr::filter(!is.na(rate)) |> 
+dplyr::arrange(dplyr::desc(rate)) |> 
+dplyr::select(source, rate) |> 
+dplyr::mutate(rate = format(rate, big.mark = ",", digits = 1)) |> 
+knitr::kable()
+```
 
 
 ## Row
+
+### Column {width="60%"}
 
 ```{r}
 #| label: spread-dygraphs-plot
 #| echo: false
 
+dyBarChart <- function(dygraph) {
+  dygraphs::dyPlotter(dygraph = dygraph,
+            name = "BarChart",
+            path = system.file("plotters/barchart.js",
+                               package = "dygraphs"))
+}
+
 spread_df <- eurcop_df |> 
   dplyr::group_by(timestamp) |> 
-  dplyr::summarize(spread = mean(spread, na.rm = TRUE))
+  dplyr::summarize(spread_p = mean(spread_p, na.rm = TRUE))
 
 spread_xts <- xts::xts(
   x = spread_df|> dplyr::select(-timestamp), 
@@ -102,11 +140,38 @@ spread_dy <-
     highlightCircleSize = 5,
     highlightSeriesBackgroundAlpha = 0.3,
     hideOnMouseOut = TRUE
-  )
+  ) |> 
+  dyBarChart()
 
 spread_dy$x$css <- 
   ".dygraph-legend > span {display:none;}
    .dygraph-legend > span.highlight { display: inline; float: right}
   "
 spread_dy
+```
+
+### Column {width="20%"}
+
+```{r}
+eurcop_df |> 
+dplyr::slice_max(order_by = timestamp, n = 1) |> 
+dplyr::filter(direction == "COP -> EUR") |> 
+dplyr::filter(!is.na(rate)) |> 
+dplyr::arrange(rate) |> 
+dplyr::select(source, rate)  |> 
+dplyr::mutate(rate = format(rate, big.mark = ",", digits = 1)) |> 
+knitr::kable()
+```
+
+### Column {width="20%"}
+
+```{r}
+eurcop_df |> 
+dplyr::slice_max(order_by = timestamp, n = 1) |> 
+dplyr::filter(direction == "EUR -> COP") |> 
+dplyr::filter(!is.na(rate)) |> 
+dplyr::arrange(dplyr::desc(rate)) |> 
+dplyr::select(source, rate) |> 
+dplyr::mutate(rate = format(rate, big.mark = ",", digits = 1)) |> 
+knitr::kable()
 ```
