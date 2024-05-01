@@ -4,6 +4,10 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "About this site",
+    "crumbs": [
+      "Dashboard",
+      "About"
+    ]
   }
 ]
