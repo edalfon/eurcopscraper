@@ -1,0 +1,1 @@
+https://www.visa.co.uk/cmsapi/fx/rates?amount=1239305&fee=0&utcConvertedDate=04%2F30%2F2024&exchangedate=04%2F30%2F2024&fromCurr=EUR&toCurr=COP
