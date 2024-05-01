@@ -22,33 +22,34 @@ visa <- function(exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
     "amount=", trans_amount, "&",
     "fee=0", "&",
     "utcConvertedDate=", utils::URLencode(
-      URL = format(exchgdate, format = "%m/%d/%Y"),
+      URL = format(as.Date(exchgdate), format = "%m/%d/%Y"),
       reserved = TRUE
     ), "&",
     "exchangedate=", utils::URLencode(
-      URL = format(exchgdate, format = "%m/%d/%Y"),
+      URL = format(as.Date(exchgdate), format = "%m/%d/%Y"),
       reserved = TRUE
     ), "&",
     "fromCurr=", currcard, "&",
     "toCurr=", currtrans
   )
 
-  visa_html <- system2(
-    command = "node",
-    args = c("JS/screenshot.js", paste0("'", site_url, "'"), "logs/visa.png"),
-    stdout = TRUE
-  )
+  cat(site_url, "\n", file = "logs/visa_links.txt", append = TRUE, sep = "")
+  # visa_html <- system2(
+  #   command = "node",
+  #   args = c("JS/screenshot.js", paste0("'", site_url, "'"), "logs/visa.png"),
+  #   stdout = TRUE
+  # )
 
   # we cannot simply use jsonlite::fromJSON anymore, because it internally
   # uses base::url to fetch the data and does not let you configure much
   # of the request. And we need to change the user agent, or it would fail
   # with a 403 error
   visa_rates <- httr2::request(site_url) |>
-    httr2::req_headers("User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36") |>
-    httr2::req_retry(
-      max_tries = 5,
-      is_transient = \(x) httr2::resp_content_type(x) != "application/json"
-    ) |>
+    # httr2::req_headers("User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36") |>
+    # httr2::req_retry(
+    #   max_tries = 5,
+    #   is_transient = \(x) httr2::resp_content_type(x) != "application/json"
+    # ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
 
