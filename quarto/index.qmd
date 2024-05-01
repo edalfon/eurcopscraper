@@ -3,6 +3,11 @@ title: ""
 ---
 
 ```{r}
+#| include: false
+lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
+```
+
+```{r}
 #| echo: false
 #| warning: false
  ingest_all_rds() |> 
