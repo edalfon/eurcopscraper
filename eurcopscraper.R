@@ -1,5 +1,3 @@
-# just to quickly test
-
 lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
 
 timestamp <- Sys.time()
