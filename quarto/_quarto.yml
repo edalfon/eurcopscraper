@@ -4,19 +4,23 @@ project:
 
 website:
   title: "EUR COP Scraper"
+  page-navigation: true
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Dashboard"
+        file: index.qmd
+      - text: "About"
+        file: about.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    contents: auto
+    collapse-level: 1
+    pinned: true
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-
-
 
