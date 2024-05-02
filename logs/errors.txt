@@ -30,3 +30,5 @@
 2024-05-02 09:27:14   Visa  Error:  HTTP 403 Forbidden. 
 2024-05-02 10:24:07   Visa  Error:  HTTP 403 Forbidden. 
 2024-05-02 12:41:12   Visa  Error:  HTTP 403 Forbidden. 
+2024-05-02 15:24:00   Visa  Error:  HTTP 403 Forbidden. 
+2024-05-02 15:24:32   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
