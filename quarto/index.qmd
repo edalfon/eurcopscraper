@@ -72,21 +72,7 @@ rates_dy
 ### Column {width="20%"}
 
 ```{r}
-#| title: COP -> EUR
-cop_eur <- eurcop_df |>
-  dplyr::slice_max(order_by = timestamp, n = 1) |>
-  dplyr::filter(direction == "COP -> EUR") |>
-  dplyr::filter(!is.na(rate)) |>
-  dplyr::arrange(rate) |>
-  dplyr::select(source, rate) 
-
-cop_eur |> knitr::kable()
-```
-
-### Column {width="20%"}
-
-```{r}
-#| title: EUR -> COP
+#| title: EUR → COP
 eur_cop <- eurcop_df |>
   dplyr::slice_max(order_by = timestamp, n = 1) |>
   dplyr::filter(direction == "EUR -> COP") |>
@@ -95,6 +81,20 @@ eur_cop <- eurcop_df |>
   dplyr::select(source, rate)
 
 eur_cop |> knitr::kable()
+```
+
+### Column {width="20%"}
+
+```{r}
+#| title: EUR ← COP
+cop_eur <- eurcop_df |>
+  dplyr::slice_max(order_by = timestamp, n = 1) |>
+  dplyr::filter(direction == "COP -> EUR") |>
+  dplyr::filter(!is.na(rate)) |>
+  dplyr::arrange(rate) |>
+  dplyr::select(source, rate) 
+
+cop_eur |> knitr::kable()
 ```
 
 
@@ -146,12 +146,47 @@ spread_dy$x$css <-
 spread_dy
 ```
 
+### Column {width="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "EUR → COP Rate"
+
+list(
+  icon = "currency-exchange",
+  color = "#e0a931",
+  value = max(eur_cop$rate) |> formatC(big.mark = ",", digits = 0, format = "f")
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "500 € → COP"
+
+list(
+  icon = "currency-dollar",
+  color = "#e0a931",
+  value = (500 * max(eur_cop$rate)) |> formatC(big.mark = ",", digits = 0, format = "f")
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Profit (€)"
+
+list(
+  icon = "currency-euro",
+  color = "#e0a931",
+  value = ((max(eur_cop$rate) * 500 / min(cop_eur$rate)) - 500) |>
+    formatC(big.mark = ",", digits = 1, format = "f")
+)
+```
 
 ### Column {width="20%"}
 
 ```{r}
 #| content: valuebox
-#| title: "EUR -> COP Rate"
+#| title: "EUR ← COP Rate"
 
 list(
   icon = "currency-exchange",
@@ -162,7 +197,7 @@ list(
 
 ```{r}
 #| content: valuebox
-#| title: "COP -> 500 €"
+#| title: "COP ← 500 €"
 
 list(
   icon = "currency-dollar",
@@ -183,38 +218,3 @@ list(
 )
 ```
 
-### Column {width="20%"}
-
-```{r}
-#| content: valuebox
-#| title: "EUR -> COP Rate"
-
-list(
-  icon = "currency-exchange",
-  color = "#e0a931",
-  value = max(eur_cop$rate) |> formatC(big.mark = ",", digits = 0, format = "f")
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "500 € -> COP"
-
-list(
-  icon = "currency-dollar",
-  color = "#e0a931",
-  value = (500 * max(eur_cop$rate)) |> formatC(big.mark = ",", digits = 0, format = "f")
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Profit (€)"
-
-list(
-  icon = "currency-euro",
-  color = "#e0a931",
-  value = ((max(eur_cop$rate) * 500 / min(cop_eur$rate)) - 500) |>
-    formatC(big.mark = ",", digits = 1, format = "f")
-)
-```
