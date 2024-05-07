@@ -70,3 +70,4 @@
 2024-05-06 21:21:13   Condor  Error:  'Error caughtError: net::ERR_NAME_NOT_RESOLVED at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-05-07 01:25:33   Visa  Error:  HTTP 403 Forbidden. 
 2024-05-07 03:25:00   Visa  Error:  HTTP 403 Forbidden. 
+2024-05-07 06:28:55   Visa  Error:  HTTP 403 Forbidden. 
