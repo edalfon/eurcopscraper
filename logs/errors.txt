@@ -77,3 +77,4 @@
 2024-05-08 15:23:03   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-05-08 18:28:44   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-05-08 21:22:22   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Connection timeout after 10001 ms 
+2024-05-09 06:30:19   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
