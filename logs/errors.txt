@@ -83,3 +83,4 @@
 2024-05-11 12:37:34   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] SSL connection timeout 
 2024-05-12 03:23:55   Master  Error:  missing value where TRUE/FALSE needed 
 2024-05-12 03:23:55   Nu  Error:  missing value where TRUE/FALSE needed 
+2024-05-13 12:40:32   Condor  Error:  'Error caughtError: net::ERR_NAME_NOT_RESOLVED at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
