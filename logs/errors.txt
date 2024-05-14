@@ -86,3 +86,4 @@
 2024-05-13 12:40:32   Condor  Error:  'Error caughtError: net::ERR_NAME_NOT_RESOLVED at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-05-13 18:27:38   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-05-13 21:23:13   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2024-05-14 01:26:20   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
