@@ -88,3 +88,4 @@
 2024-05-13 21:23:13   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-05-14 01:26:20   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-05-14 03:26:00   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2024-05-14 06:31:34   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
