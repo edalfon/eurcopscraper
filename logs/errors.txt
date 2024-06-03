@@ -95,3 +95,4 @@
 2024-05-25 06:31:09   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-05-28 18:30:06   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-05-29 01:37:58   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2024-06-03 06:31:16   Condor  Error:  'Error caughtError: net::ERR_NAME_NOT_RESOLVED at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
