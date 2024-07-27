@@ -114,3 +114,4 @@
 2024-07-20 21:21:43   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-07-23 09:26:46   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-07-27 18:30:32   Kapital  Error:  HTTP error 509. 
+2024-07-27 21:22:36   Kapital  Error:  HTTP error 509. 
