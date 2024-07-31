@@ -129,3 +129,4 @@
 2024-07-29 09:27:02   Condor  Error:  'Error caughtError: net::ERR_NAME_NOT_RESOLVED at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-07-29 09:27:13   Kapital  Error:  HTTP error 509. 
 2024-07-29 12:44:59   Kapital  Error:  HTTP error 509. 
+2024-07-31 03:26:10   Kapital  Error:  HTTP error 509. 
