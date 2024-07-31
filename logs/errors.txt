@@ -134,3 +134,5 @@
 2024-07-31 09:26:54   Kapital  Error:  HTTP error 509. 
 2024-07-31 12:44:35   Condor  Error:  'Ribon IS COMING..!!' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-07-31 12:44:46   Kapital  Error:  HTTP error 509. 
+2024-07-31 15:26:04   Condor  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2024-07-31 15:26:14   Kapital  Error:  HTTP error 509. 
