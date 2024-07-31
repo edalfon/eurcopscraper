@@ -136,3 +136,5 @@
 2024-07-31 12:44:46   Kapital  Error:  HTTP error 509. 
 2024-07-31 15:26:04   Condor  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-07-31 15:26:14   Kapital  Error:  HTTP error 509. 
+2024-07-31 18:30:25   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2024-07-31 18:30:44   Kapital  Error:  replacement has 1 row, data has 0 
