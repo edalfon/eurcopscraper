@@ -146,3 +146,5 @@
 2024-08-01 12:44:37   Kapital  Error:  replacement has 1 row, data has 0 
 2024-08-01 15:26:19   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-08-01 15:26:40   Kapital  Error:  replacement has 1 row, data has 0 
+2024-08-01 18:31:52   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2024-08-01 18:32:13   Kapital  Error:  replacement has 1 row, data has 0 
