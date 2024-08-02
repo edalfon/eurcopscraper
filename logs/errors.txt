@@ -155,3 +155,5 @@
 2024-08-01 21:26:29   Kapital  Error:  replacement has 1 row, data has 0 
 2024-08-02 01:40:03   Kapital  Error:  replacement has 1 row, data has 0 
 2024-08-02 03:27:51   Kapital  Error:  replacement has 1 row, data has 0 
+2024-08-02 06:34:11   Visa  Error:  HTTP 500 Internal Server Error. 
+2024-08-02 06:34:38   Kapital  Error:  replacement has 1 row, data has 0 
