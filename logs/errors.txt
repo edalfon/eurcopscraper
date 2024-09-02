@@ -170,3 +170,4 @@
 2024-08-16 01:41:15   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Connection timeout after 10000 ms 
 2024-08-25 21:22:36   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Connection timeout after 10001 ms 
 2024-08-30 03:27:29   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Connection timeout after 10001 ms 
+2024-09-02 06:35:38   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
