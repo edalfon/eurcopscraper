@@ -172,3 +172,4 @@
 2024-08-30 03:27:29   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Connection timeout after 10001 ms 
 2024-09-02 06:35:38   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-09-09 09:28:52   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2024-09-10 01:50:33   Vancouver  Error:  Error in the HTTP2 framing layer 
