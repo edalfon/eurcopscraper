@@ -176,3 +176,4 @@
 2024-09-10 03:29:14   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Connection timeout after 10000 ms 
 2024-09-30 15:29:37   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-10-03 12:50:02   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2024-10-04 09:28:10   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
