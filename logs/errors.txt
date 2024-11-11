@@ -192,3 +192,5 @@ Caused by error:
 2024-10-27 09:25:40   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-10-27 12:46:53   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2024-10-27 15:25:49   Condor  Error:  'Error caughtError: net::ERR_TOO_MANY_REDIRECTS at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2024-11-11 18:33:38   Master  Error:  missing value where TRUE/FALSE needed 
+2024-11-11 18:33:38   Nu  Error:  missing value where TRUE/FALSE needed 
