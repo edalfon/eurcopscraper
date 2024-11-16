@@ -194,3 +194,5 @@ Caused by error:
 2024-10-27 15:25:49   Condor  Error:  'Error caughtError: net::ERR_TOO_MANY_REDIRECTS at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2024-11-11 18:33:38   Master  Error:  missing value where TRUE/FALSE needed 
 2024-11-11 18:33:38   Nu  Error:  missing value where TRUE/FALSE needed 
+2024-11-16 15:27:22   Master  Error:  missing value where TRUE/FALSE needed 
+2024-11-16 15:27:22   Nu  Error:  missing value where TRUE/FALSE needed 
