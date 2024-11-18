@@ -196,3 +196,4 @@ Caused by error:
 2024-11-11 18:33:38   Nu  Error:  missing value where TRUE/FALSE needed 
 2024-11-16 15:27:22   Master  Error:  missing value where TRUE/FALSE needed 
 2024-11-16 15:27:22   Nu  Error:  missing value where TRUE/FALSE needed 
+2024-11-18 12:53:22   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
