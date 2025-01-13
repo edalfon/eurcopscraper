@@ -228,3 +228,5 @@ Caused by error:
 2025-01-13 06:39:00   Comdirect  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2025-01-13 09:31:46   Condor  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2025-01-13 09:31:46   Comdirect  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2025-01-13 12:53:27   Condor  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2025-01-13 12:53:28   Comdirect  Error:  '' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
