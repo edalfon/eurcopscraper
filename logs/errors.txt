@@ -246,3 +246,4 @@ Caused by error:
 Caused by error:
 ! object 'iso' not found 
 2025-02-13 09:29:03   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
+2025-02-13 12:50:35   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
