@@ -245,3 +245,4 @@ Caused by error:
 2025-01-27 15:24:16   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2025-02-13 09:29:03   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
