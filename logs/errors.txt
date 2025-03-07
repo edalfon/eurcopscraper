@@ -249,3 +249,5 @@ Caused by error:
 2025-02-13 12:50:35   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
 2025-02-16 06:33:31   Master  Error:  Unexpected content type "text/html".
 • Expecting type "application/json" or suffix "json". 
+2025-03-07 06:36:58   Master  Error:  HTTP 403 Forbidden. 
+2025-03-07 06:37:16   Nu  Error:  HTTP 403 Forbidden. 
