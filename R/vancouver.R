@@ -35,7 +35,10 @@ vancouver <- function() {
     stringr::str_replace("País\nMoneda", "País-Moneda") |>
     stringr::str_replace_all(pattern = "\n", replacement = "\t") |>
     paste0(collapse = "\n") |>
-    readr::read_tsv()
+    readr::read_tsv(
+      col_names = c("moneda", "valor_compra", "valor_venta"),
+      skip = 1
+    )
 
   # Ths would be based on pupetteer
   # vancouver_html <- system2(
