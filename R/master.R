@@ -14,17 +14,23 @@
 #' @export
 #' @examples later
 #' later
-master_puppeteer <- function(exchgdate = as.Date(format(Sys.time(),
-                               tz = "US/Pacific"
-                             )),
-                             currcard = "EUR",
-                             currtrans = "COP") {
-  print("I need node js installed (node in path) and puppeteer installed (npm i puppeteer) in the currency_scraping directory")
+master_puppeteer <- function(
+  exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
+  currcard = "EUR",
+  currtrans = "COP"
+) {
+  print(
+    "I need node js installed (node in path) and puppeteer installed (npm i puppeteer) in the currency_scraping directory"
+  )
 
   puppeteer_script <- "JS/master.js"
 
   # TODO: pass parameters
-  master_conv <- system2(command = "node", args = puppeteer_script, stdout = TRUE) # , timeout = 120
+  master_conv <- system2(
+    command = "node",
+    args = puppeteer_script,
+    stdout = TRUE
+  ) # , timeout = 120
   # TODO: let them fail
 
   print(master_conv)
@@ -57,24 +63,42 @@ master_puppeteer <- function(exchgdate = as.Date(format(Sys.time(),
 #' @examples later
 #' later
 master <- function(
-    exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
-    crdhldBillCurr = "EUR",
-    transCurr = "COP",
-    bankFee = 0,
-    trans_amount = sample(1e6:9e6, 1)) {
+  exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
+  crdhldBillCurr = "EUR",
+  transCurr = "COP",
+  bankFee = 0,
+  trans_amount = sample(1e6:9e6, 1)
+) {
   # Luckily, you can AGAIN get the data with a properly parametrized get request
   site_url <- paste0(
     "https://www.mastercard.co.uk/settlement/currencyrate/conversion-rate?",
-    "fxDate=", exchgdate, "&",
-    "transCurr=", transCurr, "&",
-    "crdhldBillCurr=", crdhldBillCurr, "&",
-    "bankFee=", bankFee, "&",
-    "transAmt=", trans_amount
+    "fxDate=",
+    exchgdate,
+    "&",
+    "transCurr=",
+    transCurr,
+    "&",
+    "crdhldBillCurr=",
+    crdhldBillCurr,
+    "&",
+    "bankFee=",
+    bankFee,
+    "&",
+    "transAmt=",
+    trans_amount
   )
 
   # sometimes it redirects to a maintainance page. That page is an html,
   # then `resp_body_json` would fail. So just let it retry
   master_rates <- httr2::request(site_url) |>
+    httr2::req_headers(
+      "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Language" = "en-US,en;q=0.5",
+      "Accept-Encoding" = "gzip, deflate, br",
+      "Connection" = "keep-alive",
+      "Upgrade-Insecure-Requests" = "1"
+    ) |>
     httr2::req_retry(
       max_tries = 5,
       is_transient = \(x) httr2::resp_content_type(x) != "application/json"
@@ -110,14 +134,14 @@ one_time_fix <- function() {
   # First I will just invalidate those obs (assign NA to the rate value)
   # And then slowly will replace some of the values
   master_data_new <- master_data |>
-    mutate(master_rate = case_when(
-      timestamp > "2023-05-01" & timestamp <= "2023-07-09 16:30:45" ~ NA,
-      TRUE ~ master_rate
-    ))
+    mutate(
+      master_rate = case_when(
+        timestamp > "2023-05-01" & timestamp <= "2023-07-09 16:30:45" ~ NA,
+        TRUE ~ master_rate
+      )
+    )
 
   saveRDS(master_data_new, "data/master.rds")
-
-
 
   # Now, with the latest data (remember to pull from github, to get the latest values updated by github actions)
   # check which date have NA's and start replacing them,
@@ -158,7 +182,12 @@ reverse_onetime <- function() {
   # and would correspond to crdhldBillCurr = "COP", and transCurr EUR
   # let's try all in one!, not sure if it will get blocked
   master_nu <- master_days |>
-    mutate(new_rate = purrr::map_dbl(day, ~ master(.x, crdhldBillCurr = "COP", transCurr = "EUR")))
+    mutate(
+      new_rate = purrr::map_dbl(
+        day,
+        ~ master(.x, crdhldBillCurr = "COP", transCurr = "EUR")
+      )
+    )
 
   nu <- master_data |>
     mutate(day = as.Date(timestamp)) |>
