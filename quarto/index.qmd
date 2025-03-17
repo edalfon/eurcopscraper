@@ -10,14 +10,14 @@ format: dashboard
 #| warning: false
 lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
 
-eurcop_df <- ingest_all_rds() |> 
-  dplyr::group_by(timestamp) |> 
+eurcop_df <- ingest_all_rds() |>
+  dplyr::group_by(timestamp) |>
   dplyr::mutate(
     EC = max(vctrs::vec_slice(rate, direction == "EUR -> COP"), na.rm = TRUE),
     CE = min(vctrs::vec_slice(rate, direction == "COP -> EUR"), na.rm = TRUE),
     spread = EC - CE,
     spread_p = 100 * (spread / CE) # EC/CE-1
-  )  |> 
+  ) |>
   dplyr::ungroup()
 ```
 
@@ -30,39 +30,43 @@ eurcop_df <- ingest_all_rds() |>
 #| label: rates-dygraphs-plot
 #| echo: false
 
-rates_df <- eurcop_df |> 
-  dplyr::select(timestamp, source, rate) |> 
+rates_df <- eurcop_df |>
+  dplyr::select(timestamp, source, rate) |>
   tidyr::pivot_wider(
-    names_from = source, 
-    values_from = rate, 
-    values_fn = mean # to deal with those cases where id_cols and names_from 
-    # columns does not uniquely identify an observation. Not sure how it 
+    names_from = source,
+    values_from = rate,
+    # to deal with those cases where id_cols and names_from
+    # columns does not uniquely identify an observation. Not sure how it
     # happened, but there are a few where we have for the same source,
     # more than one observation with the same timestamp
+    # in those cases we would like the mean, but if all values
+    # are NA, then NA should be kept and do not induce a value
+    values_fn = \(x) ifelse(all(is.na(x)), NA, mean(x, na.rm = TRUE)),
+    values_fill = NA
   )
 
 rates_xts <- xts::xts(
-  x = rates_df |> dplyr::select(-timestamp) |> as.data.frame(), 
+  x = rates_df |> dplyr::select(-timestamp) |> as.data.frame(),
   order.by = rates_df$timestamp
 )
 
-rates_dy <- 
+rates_dy <-
   dygraphs::dygraph(
-  	data = rates_xts,
-  	group = "eurcop_plot"
-  ) |> 
+    data = rates_xts,
+    group = "eurcop_plot"
+  ) |>
   dygraphs::dyAxis(name = "x", rangePad = 5) |>
   dygraphs::dyLegend(width = 700) |>
   dygraphs::dyOptions(drawPoints = TRUE, pointSize = 2) |>
   dygraphs::dyRangeSelector() |>
   dygraphs::dyHighlight(
-    highlightCircleSize = 5,
-    highlightSeriesBackgroundAlpha = 0.2,
+    highlightCircleSize = 3,
+    highlightSeriesBackgroundAlpha = 0.15,
     hideOnMouseOut = TRUE
-  ) |> 
+  ) |>
   dygraphs::dyRoller(rollPeriod = 5)
 
-rates_dy$x$css <- 
+rates_dy$x$css <-
   ".dygraph-legend > span {display:none;}
    .dygraph-legend > span.highlight { display: inline; float: right}
   "
@@ -92,7 +96,7 @@ cop_eur <- eurcop_df |>
   dplyr::filter(direction == "COP -> EUR") |>
   dplyr::filter(!is.na(rate)) |>
   dplyr::arrange(rate) |>
-  dplyr::select(source, rate) 
+  dplyr::select(source, rate)
 
 cop_eur |> knitr::kable()
 ```
@@ -107,25 +111,26 @@ cop_eur |> knitr::kable()
 #| echo: false
 
 dyBarChart <- function(dygraph) {
-  dygraphs::dyPlotter(dygraph = dygraph,
-            name = "BarChart",
-            path = system.file("plotters/barchart.js",
-                               package = "dygraphs"))
+  dygraphs::dyPlotter(
+    dygraph = dygraph,
+    name = "BarChart",
+    path = system.file("plotters/barchart.js", package = "dygraphs")
+  )
 }
 
-spread_df <- eurcop_df |> 
-  dplyr::group_by(timestamp) |> 
+spread_df <- eurcop_df |>
+  dplyr::group_by(timestamp) |>
   dplyr::summarize(spread_p = mean(spread_p, na.rm = TRUE))
 
 spread_xts <- xts::xts(
-  x = spread_df|> dplyr::select(-timestamp), 
+  x = spread_df |> dplyr::select(-timestamp),
   order.by = spread_df$timestamp
 )
 
-spread_dy <- 
+spread_dy <-
   dygraphs::dygraph(
-  	data = spread_xts,
-  	group = "eurcop_plot"
+    data = spread_xts,
+    group = "eurcop_plot"
   ) |>
   dygraphs::dyAxis(name = "x", rangePad = 5) |>
   dygraphs::dyLegend(width = 700) |>
@@ -135,11 +140,11 @@ spread_dy <-
     highlightCircleSize = 5,
     highlightSeriesBackgroundAlpha = 0.2,
     hideOnMouseOut = TRUE
-  ) |> 
-  dyBarChart() |> 
-  dygraphs::dyRoller(rollPeriod = 5) 
+  ) |>
+  dyBarChart() |>
+  dygraphs::dyRoller(rollPeriod = 5)
 
-spread_dy$x$css <- 
+spread_dy$x$css <-
   ".dygraph-legend > span {display:none;}
    .dygraph-legend > span.highlight { display: inline; float: right}
   "
@@ -166,7 +171,8 @@ list(
 list(
   icon = "currency-dollar",
   color = "#e0a931",
-  value = (500 * max(eur_cop$rate)) |> formatC(big.mark = ",", digits = 0, format = "f")
+  value = (500 * max(eur_cop$rate)) |>
+    formatC(big.mark = ",", digits = 0, format = "f")
 )
 ```
 
@@ -202,7 +208,8 @@ list(
 list(
   icon = "currency-dollar",
   color = "#e0a931",
-  value = (500 * min(cop_eur$rate)) |> formatC(big.mark = ",", digits = 0, format = "f")
+  value = (500 * min(cop_eur$rate)) |>
+    formatC(big.mark = ",", digits = 0, format = "f")
 )
 ```
 
