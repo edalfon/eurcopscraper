@@ -38,6 +38,15 @@ vancouver <- function() {
     readr::read_tsv(
       col_names = c("moneda", "valor_compra", "valor_venta"),
       skip = 1
+    ) |>
+    dplyr::mutate(
+      moneda = dplyr::case_when(
+        moneda == "Euro 100 (EUR)" ~ "Euro  (EUR) 100",
+        moneda == "Euro 200 (US)" ~ "Euro (EUR) 200",
+        moneda == "Euro 50 (EUR)" ~ "Euro (EUR) 50",
+        moneda == "Euro 500 (US)" ~ "Euro (EUR) 500",
+        TRUE ~ moneda
+      )
     )
 
   # Ths would be based on pupetteer
