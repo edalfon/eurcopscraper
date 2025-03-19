@@ -397,3 +397,4 @@ Caused by error:
 2025-03-16 06:35:10   Nu  Error:  HTTP 403 Forbidden. 
 2025-03-16 09:26:05   Master  Error:  HTTP 403 Forbidden. 
 2025-03-16 09:26:25   Nu  Error:  HTTP 403 Forbidden. 
+2025-03-19 12:52:34   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
