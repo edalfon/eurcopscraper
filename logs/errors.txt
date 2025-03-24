@@ -399,3 +399,4 @@ Caused by error:
 2025-03-16 09:26:25   Nu  Error:  HTTP 403 Forbidden. 
 2025-03-19 12:52:34   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
 2025-03-21 21:24:40   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2025-03-24 09:29:21   Visa  Error:  HTTP 520 NA. 
