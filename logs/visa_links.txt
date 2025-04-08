@@ -2742,3 +2742,4 @@ https://www.visa.co.uk/cmsapi/fx/rates?amount=1948645&fee=0&utcConvertedDate=04%
 https://www.visa.co.uk/cmsapi/fx/rates?amount=5441072&fee=0&utcConvertedDate=04%2F08%2F2025&exchangedate=04%2F08%2F2025&fromCurr=EUR&toCurr=COP
 https://www.visa.co.uk/cmsapi/fx/rates?amount=5089391&fee=0&utcConvertedDate=04%2F08%2F2025&exchangedate=04%2F08%2F2025&fromCurr=EUR&toCurr=COP
 https://www.visa.co.uk/cmsapi/fx/rates?amount=1779780&fee=0&utcConvertedDate=04%2F08%2F2025&exchangedate=04%2F08%2F2025&fromCurr=EUR&toCurr=COP
+https://www.visa.co.uk/cmsapi/fx/rates?amount=7267153&fee=0&utcConvertedDate=04%2F08%2F2025&exchangedate=04%2F08%2F2025&fromCurr=EUR&toCurr=COP
