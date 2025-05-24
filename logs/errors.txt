@@ -423,3 +423,6 @@ Caused by error:
 2025-05-21 12:57:09   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2025-05-24 18:35:28   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
