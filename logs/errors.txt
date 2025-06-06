@@ -426,3 +426,5 @@ Caused by error:
 2025-05-24 18:35:28   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2025-06-06 06:41:16   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5227 ms: Connection timed out 
+2025-06-06 06:41:23   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
