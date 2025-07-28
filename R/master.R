@@ -69,6 +69,10 @@ master <- function(
   bankFee = 0,
   trans_amount = sample(1e6:9e6, 1)
 ) {
+  #https://latam.mastercard.com/settlement/currencyrate/conversion-rate?fxDate=0000-00-00&transCurr=EUR&crdhldBillCurr=COP&bankFee=0&transAmt=100
+
+  #https://www.mastercard.com/settlement/currencyrate/conversion-rate?fxDate=2025-07-28&transCurr=EUR&crdhldBillCurr=COP&bankFee=0&transAmt=100
+
   # Luckily, you can AGAIN get the data with a properly parametrized get request
   site_url <- paste0(
     "https://www.mastercard.com/settlement/currencyrate/conversion-rate?",
