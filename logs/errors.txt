@@ -608,3 +608,5 @@ Caused by error:
 2025-07-28 07:58:02   Master  Error:  HTTP 403 Forbidden. 
 2025-07-28 07:58:21   Nu  Error:  HTTP 403 Forbidden. 
 2025-07-28 07:58:30   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2025-07-28 09:42:51   Master  Error:  HTTP 403 Forbidden. 
+2025-07-28 09:42:57   Nu  Error:  HTTP 403 Forbidden. 
