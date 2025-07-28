@@ -71,7 +71,7 @@ master <- function(
 ) {
   # Luckily, you can AGAIN get the data with a properly parametrized get request
   site_url <- paste0(
-    "https://www.mastercard.co.uk/settlement/currencyrate/conversion-rate?",
+    "https://www.mastercard.com/settlement/currencyrate/conversion-rate?",
     "fxDate=",
     exchgdate,
     "&",
