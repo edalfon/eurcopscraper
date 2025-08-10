@@ -817,3 +817,8 @@ Caused by error:
 2025-08-10 04:09:45   Nu  Error:  HTTP 403 Forbidden. 
 2025-08-10 06:41:08   Master  Error:  HTTP 403 Forbidden. 
 2025-08-10 06:41:21   Nu  Error:  HTTP 403 Forbidden. 
+2025-08-10 09:30:10   Master  Error:  HTTP 403 Forbidden. 
+2025-08-10 09:30:38   Nu  Error:  HTTP 403 Forbidden. 
+2025-08-10 09:30:56   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
