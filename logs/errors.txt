@@ -822,3 +822,5 @@ Caused by error:
 2025-08-10 09:30:56   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2025-08-10 12:57:38   Master  Error:  HTTP 403 Forbidden. 
+2025-08-10 12:57:51   Nu  Error:  HTTP 403 Forbidden. 
