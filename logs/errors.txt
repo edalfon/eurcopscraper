@@ -904,3 +904,6 @@ Caused by error in `curl::curl_fetch_memory()`:
 2025-08-14 15:33:10   Nu  Error:  Failed to perform HTTP request.
 Caused by error in `curl::curl_fetch_memory()`:
 ! Failed sending HTTP request 
+2025-08-14 18:44:25   Nu  Error:  Failed to perform HTTP request.
+Caused by error in `curl::curl_fetch_memory()`:
+! Failed sending HTTP request 
