@@ -144,11 +144,14 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
 
 (async () => {
   const browser = await puppeteer.launch({
-    headless: false, // set to true if you prefer headless
-    slowMo: 25,
+    headless: 'new', // set to true if you prefer headless
+    // slowMo: 25,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--disable-extensions',
       '--lang=en-US,en;q=0.9,de;q=0.8',
     ],
   });
