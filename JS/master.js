@@ -169,6 +169,13 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   await acceptOneTrust(page);
   await sleep(400 + Math.random() * 300); // allow UI to un-block
 
+  // add some mouse movement
+  await page.mouse.move(100, 100);
+  await page.mouse.move(200, 300);
+  await page.mouse.move(400, 500);
+  await page.mouse.click(400, 500);
+  await page.evaluate(() => window.scrollBy(0, 200));
+
   const ctx = await findConverterContext(page, 30000);
 
   // FROM currency (Transaction Currency): select COP
