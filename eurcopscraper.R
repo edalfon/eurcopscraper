@@ -20,7 +20,7 @@ try_and_log_error(msg = "Visa", fail_stamp = FALSE, {
 })
 
 try_and_log_error(msg = "Master", {
-  master_rate <- master()
+  master_rate <- master_puppeteer()
   master_df <- data.frame(master_rate = master_rate, timestamp = timestamp)
   appendRDS("data/master.rds", master_df)
 })

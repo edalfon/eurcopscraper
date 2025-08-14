@@ -35,12 +35,14 @@ master_puppeteer <- function(
 
   print(master_conv)
 
-  master_conv <- master_conv |>
+  master_cop_eur <- master_conv |>
     paste(collapse = " ") |>
     gsub(pattern = "[a-z]|,", replacement = "", ignore.case = TRUE) |>
+    strsplit(split = "=") |>
+    unlist() |>
     as.numeric()
 
-  master_rate <- 7777777 / master_conv # this is hard coded in master.js
+  master_rate <- master_cop_eur[[1]] / master_cop_eur[[2]]
 
   master_rate
 }
@@ -74,8 +76,9 @@ master <- function(
   #https://www.mastercard.com/settlement/currencyrate/conversion-rate?fxDate=2025-07-28&transCurr=EUR&crdhldBillCurr=COP&bankFee=0&transAmt=100
 
   # Luckily, you can AGAIN get the data with a properly parametrized get request
-  site_url <- paste0(
-    "https://www.mastercard.com/settlement/currencyrate/conversion-rate?",
+  base_url <- "https://www.mastercard.com"
+  path_url <- paste0(
+    "/settlement/currencyrate/conversion-rate?",
     "fxDate=",
     exchgdate,
     "&",
@@ -91,6 +94,7 @@ master <- function(
     "transAmt=",
     trans_amount
   )
+  site_url <- paste0(base_url, path_url)
 
   # sometimes it redirects to a maintainance page. That page is an html,
   # then `resp_body_json` would fail. So just let it retry
@@ -98,10 +102,19 @@ master <- function(
     httr2::req_headers(
       "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
       "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-      "Accept-Language" = "en-US,en;q=0.5",
+      "Accept-Language" = "en-US,en;q=0.9,es-CO;q=0.8,es;q=0.7,de-DE;q=0.6,de;q=0.5",
       "Accept-Encoding" = "gzip, deflate, br",
       "Connection" = "keep-alive",
-      "Upgrade-Insecure-Requests" = "1"
+      "Referer" = "https://www.mastercard.com/global/en/personal/get-support/convert-currency.html",
+      "Priority" = "u=1, i",
+      "sec-fetch-site" = "same-origin",
+      "sec-fetch-mode" = "cors",
+      "sec-fetch-dest" = "empty",
+      "sec-ch-ua" = 'Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138',
+      ":authority" = "www.mastercard.com",
+      ":method" = "GET",
+      ":path" = path_url,
+      ":scheme" = "https"
     ) |>
     httr2::req_retry(
       max_tries = 5,
@@ -109,6 +122,100 @@ master <- function(
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
+
+  resp <- httr2::request(
+    "https://www.mastercard.com/global/en/personal/get-support/convert-currency.html"
+  ) |>
+    httr2::req_headers(
+      "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      "Accept" = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Language" = "en-US,en;q=0.9,es-CO;q=0.8,es;q=0.7,de-DE;q=0.6,de;q=0.5",
+      "Accept-Encoding" = "gzip, deflate, br",
+      "Connection" = "keep-alive",
+      "Referer" = "https://www.mastercard.com/global/en/personal/get-support/convert-currency.html",
+      "Priority" = "u=1, i",
+      "sec-fetch-site" = "same-origin",
+      "sec-fetch-mode" = "cors",
+      "sec-fetch-dest" = "empty",
+      "sec-ch-ua" = 'Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138',
+    ) |>
+    httr2::req_cookie_preserve()
+  httr2::req_perform()
+
+  library(curl)
+
+  entry_url <- "https://www.mastercard.com/global/en/personal/get-support/convert-currency.html"
+  h2 <- new_handle()
+  handle_setopt(
+    h2,
+    cookiefile = "", # start capturing cookies
+    cookiejar = "", # keep them in memory
+    followlocation = TRUE, # auto-follow 302/303
+    verbose = TRUE # inspect request/response
+  )
+  handle_setheaders(
+    h2,
+    `User-Agent` = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)…",
+    Accept = "application/json, text/javascript, */*; q=0.01",
+    `Accept-Language` = "de-DE,de;q=0.9,en-US;q=0.8",
+    Connection = "keep-alive",
+    Referer = entry_url,
+    `X-Requested-With` = "XMLHttpRequest"
+  )
+  raw1 <- curl_fetch_memory(entry_url, handle = h2)
+  #rawToChar(raw1$content)
+
+  handle_setopt(h2, Referer = entry_url)
+  handle_setopt(h2, `Priority` = "u=1, i")
+  handle_setopt(h2, `sec-fetch-site` = "same-origin")
+  handle_setopt(h2, `sec-fetch-mode` = "cors")
+  handle_setopt(h2, `sec-fetch-dest` = "empty")
+  handle_setopt(h2, `:authority` = "www.mastercard.com")
+  handle_setopt(h2, `:method` = "GET")
+  handle_setopt(h2, `:path` = path_url)
+  handle_setopt(h2, `:scheme` = "https")
+  handle_setopt(
+    h2,
+    `sec-ch-ua` = 'Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138'
+  )
+
+  raw2 <- curl_fetch_memory(site_url, handle = h2)
+  #rawToChar(raw2$content)
+
+  # Inspect status
+  raw1$status_code # should be 200 or a redirect
+  raw2$status_code # should now also be 200 instead of 403
+
+  #
+  cookies <- httr2::resp_cookies(resp)
+
+  httr2::resp_cookies()
+
+  resp |> str()
+
+  headers <- httr2::resp_headers(resp)
+
+  new_req <- httr2::request(site_url) |>
+    httr2::req_headers(headers)
+
+  new_resp <- new_req %>% req_perform()
+
+  library(curl)
+
+  entry_url = "https://www.mastercard.com/global/en/personal/get-support/convert-currency.html"
+
+  # Step 1: Create a new curl handle and cookie jar
+  h <- new_handle()
+  handle_setopt(h, cookiefile = "", cookiejar = "") # "" means in-memory cookie storage
+
+  # Step 2: Perform request to urlA (cookies will be stored in handle)
+  con_a <- curl_fetch_memory(entry_url, handle = h)
+
+  # Step 3: Perform request to urlB with same handle (cookies automatically included)
+  con_b <- curl_fetch_memory(site_url, handle = h)
+
+  # Step 4: Inspect response content from urlB
+  cat(rawToChar(con_a$content))
 
   # master_rates$data$conversionRate
   trans_amount / master_rates$data$crdhldBillAmt

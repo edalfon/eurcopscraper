@@ -41,6 +41,9 @@ jobs:
       - name: Install Puppeteer
         run: npm i puppeteer
 
+      - name: Install Puppeteer extra and stealth plugin
+        run: npm i puppeteer-extra puppeteer-extra-plugin-stealth
+
       # How can I customize an action to run R code?
       # The safest way is to add a step to your action, specifying 
       # Rscript {0} as the shell for that step. 
