@@ -272,7 +272,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
 
   // 8) Final snapshot to debug visually
   try {
-    await page.screenshot({ path: 'logs/master.png', fullPage: true });
+    await page.screenshot({ path: 'logs/master_nu.png', fullPage: true });
   } catch { }
 
   // Optional: scrape a visible result summary

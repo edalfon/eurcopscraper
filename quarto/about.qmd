@@ -2,7 +2,6 @@
 title: "About"
 ---
 
-```{r}
 library(crosstalk)
 library(leaflet)
 library(DT)
@@ -19,10 +18,8 @@ bscols(
   datatable(sd, extensions="Scroller", style="bootstrap", class="compact", width="100%",
     options=list(deferRender=TRUE, scrollY=300, scroller=TRUE))
 )
-```
 
 
-```{r}
 #| include: false
 #| echo: false
 #| warning: false
@@ -37,9 +34,8 @@ eurcop_df <- ingest_all_rds() |>
     spread_p = 100 * (spread / CE) # EC/CE-1
   )  |> 
   dplyr::ungroup()
-```
 
-```{r}
+
 #| title: COP -> EUR
 cop_eur <- eurcop_df |>
   dplyr::slice_max(order_by = timestamp, n = 1) |>
@@ -49,4 +45,3 @@ cop_eur <- eurcop_df |>
   dplyr::select(source, rate) 
 
 cop_eur |> knitr::kable()
-```
