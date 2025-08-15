@@ -56,7 +56,7 @@ master_puppeteer_nu <- function(
     "I need node js installed (node in path) and puppeteer installed (npm i puppeteer) in the currency_scraping directory"
   )
 
-  puppeteer_script <- "JS/master.js"
+  puppeteer_script <- "JS/master_nu.js"
 
   # TODO: pass parameters
   master_conv <- system2(
