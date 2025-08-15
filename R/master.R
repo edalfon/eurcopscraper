@@ -70,12 +70,13 @@ master_puppeteer_nu <- function(
 
   master_cop_eur <- master_conv |>
     paste(collapse = " ") |>
-    gsub(pattern = "[a-z]|,", replacement = "", ignore.case = TRUE) |>
+    gsub(pattern = "[a-z]|\\.", replacement = "", ignore.case = TRUE) |>
     strsplit(split = "=") |>
     unlist() |>
+    gsub(pattern = ",", replacement = ".") |>
     as.numeric()
 
-  master_rate <- master_cop_eur[[1]] / master_cop_eur[[2]]
+  master_rate <- master_cop_eur[[2]] / master_cop_eur[[1]]
 
   master_rate
 }
