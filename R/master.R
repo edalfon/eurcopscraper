@@ -47,6 +47,39 @@ master_puppeteer <- function(
   master_rate
 }
 
+master_puppeteer_nu <- function(
+  exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
+  currcard = "EUR",
+  currtrans = "COP"
+) {
+  print(
+    "I need node js installed (node in path) and puppeteer installed (npm i puppeteer) in the currency_scraping directory"
+  )
+
+  puppeteer_script <- "JS/master.js"
+
+  # TODO: pass parameters
+  master_conv <- system2(
+    command = "node",
+    args = puppeteer_script,
+    stdout = TRUE
+  ) # , timeout = 120
+  # TODO: let them fail
+
+  print(master_conv)
+
+  master_cop_eur <- master_conv |>
+    paste(collapse = " ") |>
+    gsub(pattern = "[a-z]|,", replacement = "", ignore.case = TRUE) |>
+    strsplit(split = "=") |>
+    unlist() |>
+    as.numeric()
+
+  master_rate <- master_cop_eur[[1]] / master_cop_eur[[2]]
+
+  master_rate
+}
+
 #' Scraps currency exchange information for transactions using credit cards
 #' issued by a MasterCard Europe bank.
 #'

@@ -26,7 +26,7 @@ try_and_log_error(msg = "Master", {
 })
 
 try_and_log_error(msg = "Nu", {
-  nu_rate <- 1 / master(crdhldBillCurr = "COP", transCurr = "EUR")
+  nu_rate <- master_puppeteer_nu()
   nu_df <- data.frame(nu_rate = nu_rate, timestamp = timestamp)
   appendRDS("data/nu.rds", nu_df)
 })

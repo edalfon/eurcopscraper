@@ -2,4 +2,51 @@
 title: "About"
 ---
 
-About this site
+```{r}
+library(crosstalk)
+library(leaflet)
+library(DT)
+
+# Wrap data frame in SharedData
+sd <- SharedData$new(quakes[sample(nrow(quakes), 100),])
+
+# Create a filter input
+filter_slider("mag", "Magnitude", sd, column=~mag, step=0.1, width=250)
+
+# Use SharedData like a dataframe with Crosstalk-enabled widgets
+bscols(
+  leaflet(sd) %>% addTiles() %>% addMarkers(),
+  datatable(sd, extensions="Scroller", style="bootstrap", class="compact", width="100%",
+    options=list(deferRender=TRUE, scrollY=300, scroller=TRUE))
+)
+```
+
+
+```{r}
+#| include: false
+#| echo: false
+#| warning: false
+lapply(list.files("./R", full.names = TRUE), source, encoding = "UTF-8")
+
+eurcop_df <- ingest_all_rds() |> 
+  dplyr::group_by(timestamp) |> 
+  dplyr::mutate(
+    EC = max(vctrs::vec_slice(rate, direction == "EUR -> COP"), na.rm = TRUE),
+    CE = min(vctrs::vec_slice(rate, direction == "COP -> EUR"), na.rm = TRUE),
+    spread = EC - CE,
+    spread_p = 100 * (spread / CE) # EC/CE-1
+  )  |> 
+  dplyr::ungroup()
+```
+
+```{r}
+#| title: COP -> EUR
+cop_eur <- eurcop_df |>
+  dplyr::slice_max(order_by = timestamp, n = 1) |>
+  dplyr::filter(direction == "COP -> EUR") |>
+  dplyr::filter(!is.na(rate)) |>
+  dplyr::arrange(rate) |>
+  dplyr::select(source, rate) 
+
+cop_eur |> knitr::kable()
+```
