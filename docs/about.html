@@ -138,8 +138,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#wrap-data-frame-in-shareddata" id="toc-wrap-data-frame-in-shareddata" class="nav-link active" data-scroll-target="#wrap-data-frame-in-shareddata">Wrap data frame in SharedData</a></li>
+  <li><a href="#create-a-filter-input" id="toc-create-a-filter-input" class="nav-link" data-scroll-target="#create-a-filter-input">Create a filter input</a></li>
+  <li><a href="#use-shareddata-like-a-dataframe-with-crosstalk-enabled-widgets" id="toc-use-shareddata-like-a-dataframe-with-crosstalk-enabled-widgets" class="nav-link" data-scroll-target="#use-shareddata-like-a-dataframe-with-crosstalk-enabled-widgets">Use SharedData like a dataframe with Crosstalk-enabled widgets</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -163,9 +171,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<p>library(crosstalk) library(leaflet) library(DT)</p>
+<section id="wrap-data-frame-in-shareddata" class="level1">
+<h1>Wrap data frame in SharedData</h1>
+<p>sd &lt;- SharedData$new(quakes[sample(nrow(quakes), 100),])</p>
+</section>
+<section id="create-a-filter-input" class="level1">
+<h1>Create a filter input</h1>
+<p>filter_slider(“mag”, “Magnitude”, sd, column=~mag, step=0.1, width=250)</p>
+</section>
+<section id="use-shareddata-like-a-dataframe-with-crosstalk-enabled-widgets" class="level1">
+<h1>Use SharedData like a dataframe with Crosstalk-enabled widgets</h1>
+<p>bscols( leaflet(sd) %&gt;% addTiles() %&gt;% addMarkers(), datatable(sd, extensions=“Scroller”, style=“bootstrap”, class=“compact”, width=“100%”, options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)) )</p>
+<p>#| include: false #| echo: false #| warning: false lapply(list.files(“./R”, full.names = TRUE), source, encoding = “UTF-8”)</p>
+<p>eurcop_df &lt;- ingest_all_rds() |&gt; dplyr::group_by(timestamp) |&gt; dplyr::mutate( EC = max(vctrs::vec_slice(rate, direction == “EUR -&gt; COP”), na.rm = TRUE), CE = min(vctrs::vec_slice(rate, direction == “COP -&gt; EUR”), na.rm = TRUE), spread = EC - CE, spread_p = 100 * (spread / CE) # EC/CE-1 ) |&gt; dplyr::ungroup()</p>
+<p>#| title: COP -&gt; EUR cop_eur &lt;- eurcop_df |&gt; dplyr::slice_max(order_by = timestamp, n = 1) |&gt; dplyr::filter(direction == “COP -&gt; EUR”) |&gt; dplyr::filter(!is.na(rate)) |&gt; dplyr::arrange(rate) |&gt; dplyr::select(source, rate)</p>
+<p>cop_eur |&gt; knitr::kable()</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

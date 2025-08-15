@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site",
+    "text": "library(crosstalk) library(leaflet) library(DT)\n\nWrap data frame in SharedData\nsd &lt;- SharedData$new(quakes[sample(nrow(quakes), 100),])\n\n\nCreate a filter input\nfilter_slider(“mag”, “Magnitude”, sd, column=~mag, step=0.1, width=250)\n\n\nUse SharedData like a dataframe with Crosstalk-enabled widgets\nbscols( leaflet(sd) %&gt;% addTiles() %&gt;% addMarkers(), datatable(sd, extensions=“Scroller”, style=“bootstrap”, class=“compact”, width=“100%”, options=list(deferRender=TRUE, scrollY=300, scroller=TRUE)) )\n#| include: false #| echo: false #| warning: false lapply(list.files(“./R”, full.names = TRUE), source, encoding = “UTF-8”)\neurcop_df &lt;- ingest_all_rds() |&gt; dplyr::group_by(timestamp) |&gt; dplyr::mutate( EC = max(vctrs::vec_slice(rate, direction == “EUR -&gt; COP”), na.rm = TRUE), CE = min(vctrs::vec_slice(rate, direction == “COP -&gt; EUR”), na.rm = TRUE), spread = EC - CE, spread_p = 100 * (spread / CE) # EC/CE-1 ) |&gt; dplyr::ungroup()\n#| title: COP -&gt; EUR cop_eur &lt;- eurcop_df |&gt; dplyr::slice_max(order_by = timestamp, n = 1) |&gt; dplyr::filter(direction == “COP -&gt; EUR”) |&gt; dplyr::filter(!is.na(rate)) |&gt; dplyr::arrange(rate) |&gt; dplyr::select(source, rate)\ncop_eur |&gt; knitr::kable()",
     "crumbs": [
       "Dashboard",
       "About"
