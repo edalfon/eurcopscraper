@@ -936,3 +936,5 @@ Caused by error in `curl::curl_fetch_memory()`:
 2025-08-16 12:54:44   Master  Error:  subscript out of bounds 
 2025-08-16 18:37:21   Master  Error:  subscript out of bounds 
 2025-08-16 18:37:40   Nu  Error:  subscript out of bounds 
+2025-08-16 21:25:52   Master  Error:  subscript out of bounds 
+2025-08-16 21:26:13   Nu  Error:  subscript out of bounds 
