@@ -162,7 +162,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--disable-gpu',
-      '--lang=en-US,en;q=0.9',
+      '--lang=en-US,en;q=0.9,es;q=0.8',
     ],
   });
 
@@ -178,14 +178,30 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
 
 
   const page = await browser.newPage();
-  await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-US,en;q=0.9,de;q=0.8' });
+  await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-US,en;q=0.9,es;q=0.8' });
   await page.setUserAgent(randomUA);
   await page.setViewport({ width: 2048, height: 1000 });
 
-  await page.goto(
+  // Try loading regional site first and fall back to global converter
+  const converterUrls = [
     'https://latam.mastercard.com/es-region-lac/consumidores/soporte/convertidor-moneda.html',
-    { waitUntil: 'domcontentloaded', timeout: 60000 }
-  );
+    'https://www.mastercard.com/global/en/personal/get-support/convert-currency.html',
+  ];
+  let loaded = false;
+  for (const url of converterUrls) {
+    try {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      await page.waitForSelector('#tCurrency', { timeout: 10000 });
+      loaded = true;
+      break;
+    } catch {
+      // Try next URL if the page shows an error or fails to load
+    }
+  }
+  if (!loaded) {
+    throw new Error('Currency converter not available');
+  }
+
   await simulateHumanActivity(page);
 
   await page.setViewport({
