@@ -103,7 +103,7 @@ async function clickOptionByText(ctx, text, timeout = 30000) {
     const el = await handle.asElement();
     if (el) {
       try {
-        await el.scrollIntoViewIfNeeded?.().catch(() => { });
+        await el.scrollIntoViewIfNeeded?.().catch?.(() => { });
         await el.click({ delay: 10 });
         return true;
       } catch {
@@ -131,7 +131,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   await clearInput(ctx, inputSelector);
   // Ensure focus, then type slowly to trigger app filters
   await ctx.click(inputSelector, { delay: 10 }).catch(() => { });
-  await ctx.focus?.(inputSelector).catch(() => { });
+  await ctx.focus?.(inputSelector).catch?.(() => { });
   // If ctx is a Frame, use page.keyboard (the focused element is within the frame)
   await page.keyboard.type(query, { delay: 40 });
 
