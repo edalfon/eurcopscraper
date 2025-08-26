@@ -48,5 +48,11 @@ try_and_log_error(msg = "Kapital", {
   kapital_df$timestamp <- timestamp
   appendRDS("data/kapital.rds", kapital_df)
 })
+try_and_log_error(msg = "ER API", {
+  er_rate <- er_api()
+  er_df <- data.frame(er_rate = er_rate, timestamp = timestamp)
+  appendRDS("data/erapi.rds", er_df)
+})
+
 
 quarto::quarto_render("quarto", as_job = FALSE, execute_dir = ".")
