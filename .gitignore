@@ -42,4 +42,3 @@ vignettes/*.pdf
 .cache
 node_modules
 .mastercard-profile
-data/erapi.rds
