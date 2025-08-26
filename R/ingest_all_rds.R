@@ -53,8 +53,23 @@ ingest_all_rds <- function() {
     dplyr::mutate(direction = "COP -> EUR") |>
     dplyr::select(timestamp, source, rate = venta, direction)
 
+  er_api_df <- if (file.exists("data/erapi.rds")) {
+    readRDS("data/erapi.rds") |>
+      dplyr::mutate(source = "ER API") |>
+      dplyr::mutate(direction = "EUR -> COP") |>
+      dplyr::select(timestamp, source, rate = er_rate, direction)
+  } else {
+    dplyr::tibble(
+      timestamp = as.POSIXct(character()),
+      source = character(),
+      rate = numeric(),
+      direction = character()
+    )
+  }
+
+
   eurcop_df <- dplyr::bind_rows(
-    vancouver_df, visa_df, master_df, condor_df, comdirect_df, kapital_df, nu_df
+      vancouver_df, visa_df, master_df, condor_df, comdirect_df, kapital_df, nu_df, er_api_df
   )
 
   eurcop_df
