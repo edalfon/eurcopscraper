@@ -1099,3 +1099,4 @@ Caused by error in `curl::curl_fetch_memory()`:
 2025-09-02 02:04:43   Nu  Error:  subscript out of bounds 
 2025-09-02 03:43:13   Nu  Error:  subscript out of bounds 
 2025-09-02 06:41:18   Nu  Error:  subscript out of bounds 
+2025-09-02 12:56:35   Nu  Error:  subscript out of bounds 
