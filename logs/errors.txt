@@ -1150,3 +1150,4 @@ Caused by error in `curl::curl_fetch_memory()`:
 2025-09-11 03:38:00   Nu  Error:  subscript out of bounds 
 2025-09-11 06:39:33   Nu  Error:  subscript out of bounds 
 2025-09-11 12:53:44   Nu  Error:  subscript out of bounds 
+2025-09-11 18:34:14   Nu  Error:  subscript out of bounds 
