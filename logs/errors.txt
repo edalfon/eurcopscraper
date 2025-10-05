@@ -1666,3 +1666,6 @@ Caused by error:
 2025-10-05 18:36:07   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2025-10-05 21:22:21   Visa  Error:  HTTP 403 Forbidden. 
+2025-10-05 21:22:56   Master  Error:  subscript out of bounds 
+2025-10-05 21:23:16   Nu  Error:  subscript out of bounds 
