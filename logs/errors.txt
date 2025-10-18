@@ -1952,3 +1952,6 @@ Caused by error:
 2025-10-18 15:24:35   Visa  Error:  HTTP 403 Forbidden. 
 2025-10-18 15:25:09   Master  Error:  subscript out of bounds 
 2025-10-18 15:26:05   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2025-10-18 18:34:53   Visa  Error:  HTTP 403 Forbidden. 
+2025-10-18 18:35:29   Master  Error:  subscript out of bounds 
+2025-10-18 18:35:44   Nu  Error:  subscript out of bounds 
