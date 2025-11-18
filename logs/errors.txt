@@ -2639,3 +2639,7 @@ Caused by error:
 2025-11-18 09:32:39   Visa  Error:  HTTP 403 Forbidden. 
 2025-11-18 09:33:13   Master  Error:  subscript out of bounds 
 2025-11-18 09:33:30   Nu  Error:  subscript out of bounds 
+2025-11-18 12:59:10   Visa  Error:  HTTP 403 Forbidden. 
+2025-11-18 12:59:45   Master  Error:  subscript out of bounds 
+2025-11-18 13:00:00   Nu  Error:  subscript out of bounds 
+2025-11-18 13:00:36   ER API  Error:  cannot open the connection to 'https://open.er-api.com/v6/latest/EUR' 
