@@ -2814,3 +2814,6 @@ Caused by error:
 2025-11-26 13:02:40   Master  Error:  subscript out of bounds 
 2025-11-26 13:02:58   Nu  Error:  subscript out of bounds 
 2025-11-26 13:03:37   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2025-11-26 15:30:38   Visa  Error:  HTTP 403 Forbidden. 
+2025-11-26 15:31:15   Master  Error:  subscript out of bounds 
+2025-11-26 15:31:34   Nu  Error:  subscript out of bounds 
