@@ -2826,3 +2826,7 @@ Caused by error:
 2025-11-27 02:06:41   Visa  Error:  HTTP 403 Forbidden. 
 2025-11-27 02:07:16   Master  Error:  subscript out of bounds 
 2025-11-27 02:07:33   Nu  Error:  subscript out of bounds 
+2025-11-27 03:50:11   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Resolving timed out after 10001 milliseconds 
+2025-11-27 03:50:11   Visa  Error:  HTTP 403 Forbidden. 
+2025-11-27 03:50:46   Master  Error:  subscript out of bounds 
+2025-11-27 03:51:04   Nu  Error:  subscript out of bounds 
