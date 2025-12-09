@@ -3138,3 +3138,7 @@ Caused by error:
 2025-12-09 09:35:04   Master  Error:  subscript out of bounds 
 2025-12-09 09:35:26   Nu  Error:  subscript out of bounds 
 2025-12-09 09:35:43   Kapital  Error:  HTTP error 500. 
+2025-12-09 13:03:33   Visa  Error:  HTTP 403 Forbidden. 
+2025-12-09 13:04:10   Master  Error:  subscript out of bounds 
+2025-12-09 13:04:33   Nu  Error:  subscript out of bounds 
+2025-12-09 13:04:50   Kapital  Error:  HTTP error 500. 
