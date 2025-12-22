@@ -3443,3 +3443,8 @@ Caused by error:
 2025-12-22 02:27:09   Visa  Error:  HTTP 403 Forbidden. 
 2025-12-22 02:27:45   Master  Error:  subscript out of bounds 
 2025-12-22 02:28:07   Nu  Error:  subscript out of bounds 
+2025-12-22 04:09:45   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5256 ms: Connection timed out 
+2025-12-22 04:09:45   Visa  Error:  HTTP 403 Forbidden. 
+2025-12-22 04:10:20   Master  Error:  subscript out of bounds 
+2025-12-22 04:10:42   Nu  Error:  subscript out of bounds 
+2025-12-22 04:10:47   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
