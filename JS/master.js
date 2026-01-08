@@ -27,9 +27,9 @@ async function acceptOneTrust(page) {
 async function findConverterContext(page, timeout = 30000) {
   const start = Date.now();
   while (Date.now() - start < timeout) {
-    if (await page.$('#tCurrency')) return page;
+    if (await page.$('#selectPlaceholder1')) return page;
     for (const frame of page.frames()) {
-      if (await frame.$('#tCurrency')) return frame;
+      if (await frame.$('#selectPlaceholder1')) return frame;
     }
     await sleep(400 + Math.random() * 300);
   }
@@ -176,7 +176,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   await page.mouse.click(400, 500);
   await page.evaluate(() => window.scrollBy(0, 200));
 
-  // const ctx = await findConverterContext(page, 30000);
+  const ctx = await findConverterContext(page, 30000);
 
   // FROM currency (Transaction Currency): select COP
   await waitVisible(ctx, '#selectPlaceholder1', 30000);
