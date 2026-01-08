@@ -3893,3 +3893,4 @@ Caused by error:
 2026-01-08 17:06:09   Nu  Error:  subscript out of bounds 
 2026-01-08 18:42:24   Visa  Error:  HTTP 403 Forbidden. 
 2026-01-08 18:44:01   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-01-08 21:32:10   Visa  Error:  HTTP 403 Forbidden. 
