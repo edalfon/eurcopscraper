@@ -230,12 +230,8 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
 
   // FROM currency (Transaction Currency): select COP
   await waitVisible(ctx, '#selectPlaceholder1', 30000);
-
-
-
   await ctx.click('#selectPlaceholder1');
   await typeAndSelect(ctx, page, '#selectPlaceholder1', 'EURO - EUR', 'EURO - EUR');
-
 
   await simulateHumanActivity(page);
 

@@ -33,13 +33,17 @@ master_puppeteer <- function(
   ) # , timeout = 120
   # TODO: let them fail
 
-  print(master_conv)
+  cat("puppeteer_script: ", puppeteer_script)
+  cat("output: ", master_conv)
 
   master_cop_eur <- master_conv |>
     paste(collapse = " ") |>
-    gsub(pattern = "[a-z]|,", replacement = "", ignore.case = TRUE) |>
+    gsub(pattern = "EUR", replacement = "", ignore.case = TRUE) |>
+    gsub(pattern = "COP", replacement = "", ignore.case = TRUE) |>
     strsplit(split = "=") |>
-    unlist() |>
+    unlist() |> 
+    #gsub(pattern = ",", replacement = ".") |>
+    readr::parse_number() |>
     as.numeric()
 
   master_rate <- master_cop_eur[[1]] / master_cop_eur[[2]]
@@ -66,14 +70,17 @@ master_puppeteer_nu <- function(
   ) # , timeout = 120
   # TODO: let them fail
 
-  print(master_conv)
+  cat("puppeteer_script: ", puppeteer_script)
+  cat("output: ", master_conv)
 
   master_cop_eur <- master_conv |>
     paste(collapse = " ") |>
-    gsub(pattern = "[a-z]|\\.", replacement = "", ignore.case = TRUE) |>
+    gsub(pattern = "EUR", replacement = "", ignore.case = TRUE) |>
+    gsub(pattern = "COP", replacement = "", ignore.case = TRUE) |>
     strsplit(split = "=") |>
-    unlist() |>
-    gsub(pattern = ",", replacement = ".") |>
+    unlist() |> 
+    #gsub(pattern = ",", replacement = ".") |>
+    readr::parse_number() |>
     as.numeric()
 
   master_rate <- master_cop_eur[[2]] / master_cop_eur[[1]]

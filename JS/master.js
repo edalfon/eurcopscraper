@@ -179,28 +179,31 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   const ctx = await findConverterContext(page, 30000);
 
   // FROM currency (Transaction Currency): select COP
-  await waitVisible(ctx, '#tCurrency', 30000);
-  await ctx.click('#tCurrency');
-  await typeAndSelect(ctx, page, '#transactionCurr', 'cop', 'COP');
+  await waitVisible(ctx, '#selectPlaceholder1', 30000);
+  await ctx.click('#selectPlaceholder1');
+  await typeAndSelect(ctx, page, '#selectPlaceholder1', 'COLOMBIAN PESO - COP', 'COLOMBIAN PESO - COP');
 
   // Amount
-  await waitVisible(ctx, '#txtTAmt', 30000);
-  await clearInput(ctx, '#txtTAmt');
-  await ctx.click('#txtTAmt').catch(() => { });
+  await waitVisible(ctx, '#amountInput', 30000);
+  await clearInput(ctx, '#amountInput');
+  await ctx.click('#amountInput').catch(() => { });
   await page.keyboard.type('10000000', { delay: 30 });
 
   // TO currency (Your Card Currency): select EUR
-  await waitVisible(ctx, '#cardCurrency', 30000);
-  await ctx.click('#cardCurrency');
-  await typeAndSelect(ctx, page, '#cardCurr', 'eur', 'EUR');
+  await waitVisible(ctx, '#selectPlaceholder2', 30000);
+  await ctx.click('#selectPlaceholder2');
+  await typeAndSelect(ctx, page, '#selectPlaceholder2', 'EURO - EUR', 'EURO - EUR');
 
   // Bank fee -> 0
-  await waitVisible(ctx, '#BankFee', 30000);
-  await clearInput(ctx, '#BankFee');
-  await ctx.click('#BankFee').catch(() => { });
+  //await waitVisible(ctx, '#bankFeeInput', 30000);
+  await clearInput(ctx, '#bankFeeInput');
+  await ctx.click('#bankFeeInput').catch(() => { });
   await page.keyboard.type('0', { delay: 20 });
+  await sleep(200 + Math.random() * 200);
+  await page.keyboard.press('Enter');
 
   // Date picker: select "Current Rate" if available
+  /*
   try {
     await waitVisible(ctx, '#getDate', 10000);
     await ctx.click('#getDate');
@@ -217,7 +220,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
       (await ctx.$x("//button[contains(., 'Convert') or contains(., 'Calculate')]")).then(xs => xs[0]);
     if (convertBtn) await convertBtn.click();
   } catch { }
-
+  */
   // 8) Final snapshot to debug visually
   try {
     await page.screenshot({ path: 'logs/master.png', fullPage: true });
