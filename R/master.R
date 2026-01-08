@@ -33,8 +33,8 @@ master_puppeteer <- function(
   ) # , timeout = 120
   # TODO: let them fail
 
-  cat("puppeteer_script: ", puppeteer_script)
-  cat("output: ", master_conv)
+  cat("\npuppeteer_script: ", puppeteer_script, "\n")
+  cat("output: ", master_conv, "\n")
 
   master_cop_eur <- master_conv |>
     paste(collapse = " ") |>
@@ -70,8 +70,8 @@ master_puppeteer_nu <- function(
   ) # , timeout = 120
   # TODO: let them fail
 
-  cat("puppeteer_script: ", puppeteer_script)
-  cat("output: ", master_conv)
+  cat("\npuppeteer_script: ", puppeteer_script, "\n")
+  cat("output: ", master_conv, "\n")
 
   master_cop_eur <- master_conv |>
     paste(collapse = " ") |>

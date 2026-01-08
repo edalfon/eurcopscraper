@@ -176,7 +176,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   await page.mouse.click(400, 500);
   await page.evaluate(() => window.scrollBy(0, 200));
 
-  const ctx = await findConverterContext(page, 30000);
+  // const ctx = await findConverterContext(page, 30000);
 
   // FROM currency (Transaction Currency): select COP
   await waitVisible(ctx, '#selectPlaceholder1', 30000);
