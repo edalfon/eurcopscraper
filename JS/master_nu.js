@@ -38,9 +38,9 @@ async function acceptOneTrust(page) {
 async function findConverterContext(page, timeout = 30000) {
   const start = Date.now();
   while (Date.now() - start < timeout) {
-    if (await page.$('#tCurrency')) return page;
+    if (await page.$('#selectPlaceholder1')) return page;
     for (const frame of page.frames()) {
-      if (await frame.$('#tCurrency')) return frame;
+      if (await frame.$('#selectPlaceholder1')) return frame;
     }
     await sleep(400 + Math.random() * 300);
   }
@@ -158,6 +158,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
     headless: 'new',
     userDataDir: './.mastercard-profile',
     args: [
+      '--start-maximized',
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
@@ -191,16 +192,17 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   for (const url of converterUrls) {
     try {
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-      await page.waitForSelector('#tCurrency', { timeout: 10000 });
-      loaded = true;
-      break;
+      //await page.waitForSelector('#tCurrency', { timeout: 10000 });
+      //loaded = true;
+      //break;
     } catch {
       // Try next URL if the page shows an error or fails to load
     }
   }
-  if (!loaded) {
-    throw new Error('Currency converter not available');
-  }
+  //if (!loaded) {
+  //  throw new Error('Currency converter not available');
+  //}
+
 
   await simulateHumanActivity(page);
 
@@ -215,6 +217,7 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   await acceptOneTrust(page);
   await simulateHumanActivity(page);
 
+
   // add some mouse movement
   await page.mouse.move(100, 100);
   await page.mouse.move(200, 300);
@@ -222,40 +225,49 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   await page.mouse.click(400, 500);
   await page.evaluate(() => window.scrollBy(0, 200));
 
+
   const ctx = await findConverterContext(page, 30000);
 
   // FROM currency (Transaction Currency): select COP
-  await waitVisible(ctx, '#tCurrency', 30000);
-  await ctx.click('#tCurrency');
-  await typeAndSelect(ctx, page, '#transactionCurr', 'eur', 'EUR');
+  await waitVisible(ctx, '#selectPlaceholder1', 30000);
+
+
+
+  await ctx.click('#selectPlaceholder1');
+  await typeAndSelect(ctx, page, '#selectPlaceholder1', 'EURO - EUR', 'EURO - EUR');
+
 
   await simulateHumanActivity(page);
 
   // Amount
-  await waitVisible(ctx, '#txtTAmt', 30000);
-  await clearInput(ctx, '#txtTAmt');
-  await ctx.click('#txtTAmt').catch(() => { });
+  await waitVisible(ctx, '#amountInput', 30000);
+  await clearInput(ctx, '#amountInput');
+  await ctx.click('#amountInput').catch(() => { });
   const randomValue = Math.floor(500 * Math.random()) + 500;
   await page.keyboard.type(randomValue.toString(), { delay: 30 });
 
   await simulateHumanActivity(page);
 
   // TO currency (Your Card Currency): select EUR
-  await waitVisible(ctx, '#cardCurrency', 30000);
-  await ctx.click('#cardCurrency');
-  await typeAndSelect(ctx, page, '#cardCurr', 'cop', 'COP');
+  await waitVisible(ctx, '#selectPlaceholder2', 30000);
+  await ctx.click('#selectPlaceholder2');
+  await typeAndSelect(ctx, page, '#selectPlaceholder2', 'COLOMBIAN PESO - COP', 'COLOMBIAN PESO - COP');
 
   await simulateHumanActivity(page);
 
   // Bank fee -> 0
-  await waitVisible(ctx, '#BankFee', 30000);
-  await clearInput(ctx, '#BankFee');
-  await ctx.click('#BankFee').catch(() => { });
+  //await waitVisible(ctx, '#bankFeeInput', 30000);
+  await clearInput(ctx, '#bankFeeInput');
+  await ctx.click('#bankFeeInput').catch(() => { });
   await page.keyboard.type('0', { delay: 20 });
   await sleep(200 + Math.random() * 200);
   await page.keyboard.press('Enter');
 
   await simulateHumanActivity(page);
+
+
+  //await page.waitForTimeout(3000 + Math.random() * 500);
+  //throw new Error('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
 
 
 
@@ -306,4 +318,32 @@ async function typeAndSelect(ctx, page, inputSelector, query, optionText) {
   console.error('Script failed:', err);
   process.exit(1);
 });
+
+
+
+
+
+/*
+        const targetPage = page;
+        await puppeteer.Locator.race([
+            targetPage.locator('::-p-aria(Aceptar cookies)'),
+            targetPage.locator('#onetrust-accept-btn-handler'),
+            targetPage.locator('::-p-xpath(//*[@id=\\"onetrust-accept-btn-handler\\"])'),
+            targetPage.locator(':scope >>> #onetrust-accept-btn-handler'),
+            targetPage.locator('::-p-text(Aceptar cookies)')
+        ])
+            .setTimeout(timeout)
+            .click({
+              offset: {
+                x: 98.0999755859375,
+                y: 22.4749755859375,
+              },
+            });
+*/
+
+
+
+
+
+
 
