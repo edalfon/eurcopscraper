@@ -3914,3 +3914,8 @@ Caused by error:
 2026-01-10 04:03:05   Nu  Error:  subscript out of bounds 
 2026-01-10 06:43:28   Visa  Error:  HTTP 403 Forbidden. 
 2026-01-10 08:30:35   Visa  Error:  HTTP 403 Forbidden. 
+2026-01-10 08:39:36   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerifying you are
+                     (right here) ------^
+ 
+2026-01-10 08:41:06   Nu  Error:  subscript out of bounds 
