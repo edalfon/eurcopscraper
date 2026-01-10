@@ -3932,3 +3932,9 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-01-10 15:29:43   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5269 ms: Connection timed out 
+2026-01-10 15:30:22   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-01-10 15:32:00   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
