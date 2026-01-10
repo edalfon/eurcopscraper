@@ -52,7 +52,7 @@ async function findConverterContext(page, timeout = 30000) {
 
 (async () => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: 'new',
     userDataDir: './.mastercard-profile',
     args: [
       '--start-maximized',

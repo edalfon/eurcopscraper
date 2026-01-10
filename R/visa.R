@@ -38,8 +38,8 @@ exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
   cat("\npuppeteer_script: ", puppeteer_script, "\n")
   cat("output: ", visa_json, "\n")
 
-  visa_json |> 
-    jsonlite::fromJSON() |> 
+  visa_json_parsed <- jsonlite::fromJSON(visa_json)
+  visa_json_parsed$reverseAmount |> 
     gsub(pattern = ",", replacement = "") |>
     as.numeric()
 }
