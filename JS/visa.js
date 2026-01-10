@@ -18,36 +18,7 @@ async function simulateHumanActivity(page) {
   await randomPause();
 }
 
-async function acceptOneTrust(page) {
-  // Try top-level
-  const topBtn = await page.$('#onetrust-accept-btn-handler');
-  if (topBtn) {
-    await topBtn.click().catch(() => { });
-    await sleep(400 + Math.random() * 300);
-    return;
-  }
-  // Try in any iframe
-  for (const frame of page.frames()) {
-    const btn = await frame.$('#onetrust-accept-btn-handler');
-    if (btn) {
-      await btn.click().catch(() => { });
-      await sleep(400 + Math.random() * 300);
-      return;
-    }
-  }
-}
 
-async function findConverterContext(page, timeout = 30000) {
-  const start = Date.now();
-  while (Date.now() - start < timeout) {
-    if (await page.$('#selectPlaceholder1')) return page;
-    for (const frame of page.frames()) {
-      if (await frame.$('#selectPlaceholder1')) return frame;
-    }
-    await sleep(400 + Math.random() * 300);
-  }
-  throw new Error('Currency converter not found in page or frames within timeout.');
-}
 
 
 (async () => {
@@ -86,11 +57,16 @@ async function findConverterContext(page, timeout = 30000) {
 
   await simulateHumanActivity(page);
 
+  await page.keyboard.press('Enter');
+
+  await simulateHumanActivity(page);
+
   // and now let's go to the site_url (parametrized url)
   await page.goto(site_url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
   await simulateHumanActivity(page);
 
+  await simulateHumanActivity(page);
 
   // 8) Final snapshot to debug visually
   try {

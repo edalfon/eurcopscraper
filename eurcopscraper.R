@@ -14,7 +14,8 @@ try_and_log_error(msg = "Vancouver", {
 # there must be some sort of rate-limit going on, that applies to the IP address
 # from github servers or something (already tried user agent and other headers)
 # update: fixed it by using puppeteer, so let it fail_stamp again
-try_and_log_error(msg = "Visa", fail_stamp = TRUE, {
+# well, not exactly, cloudflare is still blocking it
+try_and_log_error(msg = "Visa", fail_stamp = FALSE, {
   visa_rate <- visa_puppeteer()
   visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
   appendRDS("data/visa.rds", visa_df)
