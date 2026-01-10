@@ -1,3 +1,50 @@
+visa_puppeteer <- function(
+exchgdate = as.Date(format(Sys.time(), tz = "US/Pacific")),
+                 currcard = "EUR",
+                 currtrans = "COP",
+                 trans_amount = sample(1e6:9e6, 1)) {
+  
+  # Luckily, you can get the data with a properly parametrized get request
+  site_url <- paste0(
+    "https://www.visa.co.uk/cmsapi/fx/rates?",
+    "amount=", trans_amount, "&",
+    "fee=0", "&",
+    "utcConvertedDate=", utils::URLencode(
+      URL = format(as.Date(exchgdate), format = "%m/%d/%Y"),
+      reserved = TRUE
+    ), "&",
+    "exchangedate=", utils::URLencode(
+      URL = format(as.Date(exchgdate), format = "%m/%d/%Y"),
+      reserved = TRUE
+    ), "&",
+    "fromCurr=", currcard, "&",
+    "toCurr=", currtrans
+  )
+
+  # but they have protected it from direct requests. So it still works
+  # from the browser, but not directly anymore. So let's just keep
+  # using the url above, but let's use puppeteer to get the data
+  # after navigating to the exchange rate page
+
+  puppeteer_script <- "JS/visa.js"
+ 
+  visa_json <- system2(
+    command = "node",
+    args = c(puppeteer_script, site_url), # pass the url as an argument
+    stdout = TRUE
+  ) # , timeout = 120
+  
+
+  cat("\npuppeteer_script: ", puppeteer_script, "\n")
+  cat("output: ", visa_json, "\n")
+
+  visa_json |> 
+    jsonlite::fromJSON() |> 
+    gsub(pattern = ",", replacement = "") |>
+    as.numeric()
+}
+
+
 #' Scraps currency exchange information for transactions using credit cards
 #' issued by a Visa Europe bank.
 #'
