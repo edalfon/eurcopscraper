@@ -3908,3 +3908,5 @@ Caused by error:
 2026-01-09 21:30:50   Visa  Error:  HTTP 403 Forbidden. 
 2026-01-09 21:32:23   Nu  Error:  subscript out of bounds 
 2026-01-09 21:32:28   Condor  Error:  'Error caughtError: Execution context was destroyed, most likely because of a navigation.' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-01-10 02:21:14   Visa  Error:  HTTP 403 Forbidden. 
+2026-01-10 02:22:49   Nu  Error:  subscript out of bounds 
