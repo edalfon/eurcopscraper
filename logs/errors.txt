@@ -3968,3 +3968,8 @@ Caused by error:
                      (right here) ------^
  
 2026-01-11 13:01:19   Nu  Error:  subscript out of bounds 
+2026-01-11 15:30:46   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-01-11 15:32:18   Nu  Error:  subscript out of bounds 
