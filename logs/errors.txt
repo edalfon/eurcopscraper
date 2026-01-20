@@ -4299,3 +4299,7 @@ Caused by error:
                      (right here) ------^
  
 2026-01-20 15:44:05   Nu  Error:  subscript out of bounds 
+2026-01-20 19:05:14   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
