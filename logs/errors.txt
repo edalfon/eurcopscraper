@@ -4402,3 +4402,11 @@ Caused by error:
                                        www.visa.co.ukVerify you are hu
                      (right here) ------^
  
+2026-01-23 18:50:40   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-01-23 18:52:12   Nu  Error:  subscript out of bounds 
+2026-01-23 18:52:28   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
