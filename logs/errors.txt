@@ -4426,3 +4426,9 @@ Caused by error:
                                        www.visa.co.ukVerify you are hu
                      (right here) ------^
  
+2026-01-24 09:31:43   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5234 ms: Connection timed out 
+2026-01-24 09:32:20   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-01-24 09:33:58   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
