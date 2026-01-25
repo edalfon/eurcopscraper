@@ -4452,3 +4452,9 @@ Caused by error:
                      (right here) ------^
  
 2026-01-24 21:30:05   Nu  Error:  subscript out of bounds 
+2026-01-25 02:39:39   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5225 ms: Connection timed out 
+2026-01-25 02:40:19   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-01-25 02:41:58   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
