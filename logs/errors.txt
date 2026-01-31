@@ -4710,3 +4710,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-01-31 21:33:23   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
