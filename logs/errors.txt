@@ -4743,3 +4743,9 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-02-01 21:33:47   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5232 ms: Connection timed out 
+2026-02-01 21:33:57   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-02-01 21:35:26   Nu  Error:  subscript out of bounds 
