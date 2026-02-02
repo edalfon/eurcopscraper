@@ -4755,3 +4755,8 @@ Caused by error:
  
 2026-02-02 03:17:27   Nu  Error:  subscript out of bounds 
 2026-02-02 03:17:41   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-02-02 07:15:40   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-02-02 07:17:10   Nu  Error:  subscript out of bounds 
