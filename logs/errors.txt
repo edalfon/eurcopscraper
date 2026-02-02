@@ -4764,3 +4764,9 @@ Caused by error:
                                        www.visa.co.ukVerify you are hu
                      (right here) ------^
  
+2026-02-02 13:21:45   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5239 ms: Connection timed out 
+2026-02-02 13:22:22   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-02-02 13:23:51   Nu  Error:  subscript out of bounds 
