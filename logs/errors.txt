@@ -4847,3 +4847,7 @@ Caused by error:
                      (right here) ------^
  
 2026-02-04 19:05:52   Nu  Error:  subscript out of bounds 
+2026-02-04 21:44:28   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
