@@ -4943,3 +4943,8 @@ Caused by error:
                                        www.visa.co.ukVerify you are hu
                      (right here) ------^
  
+2026-02-07 15:36:56   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-02-07 15:38:25   Nu  Error:  subscript out of bounds 
