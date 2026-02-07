@@ -4930,3 +4930,8 @@ Caused by error:
                      (right here) ------^
  
 2026-02-07 04:47:59   Nu  Error:  subscript out of bounds 
+2026-02-07 06:58:18   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-02-07 06:59:50   Nu  Error:  subscript out of bounds 
