@@ -4957,3 +4957,9 @@ Caused by error:
                      (right here) ------^
  
 2026-02-07 21:38:57   Nu  Error:  subscript out of bounds 
+2026-02-08 03:30:28   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5265 ms: Connection timed out 
+2026-02-08 03:31:05   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-02-08 03:32:36   Nu  Error:  subscript out of bounds 
