@@ -5038,3 +5038,8 @@ Caused by error:
                                        www.visa.co.ukVerify you are hu
                      (right here) ------^
  
+2026-02-10 13:47:28   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-02-10 13:48:56   Nu  Error:  subscript out of bounds 
