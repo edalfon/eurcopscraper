@@ -5058,3 +5058,9 @@ Caused by error:
                                        www.visa.co.ukVerify you are hu
                      (right here) ------^
  
+2026-02-11 03:20:57   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5259 ms: Connection timed out 
+2026-02-11 03:21:37   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukVerify you are hu
+                     (right here) ------^
+ 
+2026-02-11 03:23:40   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
