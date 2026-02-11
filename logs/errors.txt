@@ -5090,3 +5090,8 @@ Caused by error:
                      (right here) ------^
  
 2026-02-11 19:19:20   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-02-11 21:48:07   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5238 ms: Connection timed out 
+2026-02-11 21:48:44   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
