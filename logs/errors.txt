@@ -5139,3 +5139,9 @@ Caused by error:
                      (right here) ------^
  
 2026-02-13 10:00:38   Nu  Error:  subscript out of bounds 
+2026-02-13 13:22:28   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5253 ms: Connection timed out 
+2026-02-13 13:23:07   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-02-13 13:24:40   Nu  Error:  subscript out of bounds 
