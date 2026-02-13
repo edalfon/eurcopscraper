@@ -5155,3 +5155,7 @@ Caused by error:
                      (right here) ------^
  
 2026-02-13 19:07:10   Nu  Error:  subscript out of bounds 
+2026-02-13 21:49:13   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
