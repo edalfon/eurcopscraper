@@ -5389,3 +5389,9 @@ Caused by error:
  
 2026-02-19 21:47:01   Nu  Error:  subscript out of bounds 
 2026-02-19 21:47:09   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-02-20 02:51:18   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-02-20 02:52:48   Nu  Error:  subscript out of bounds 
+2026-02-20 02:52:56   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
