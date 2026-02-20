@@ -5413,3 +5413,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-02-20 15:49:57   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
