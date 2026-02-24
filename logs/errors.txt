@@ -5570,3 +5570,7 @@ Caused by error:
 2026-02-24 19:17:35   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-02-24 21:47:25   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
