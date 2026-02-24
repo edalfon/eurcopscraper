@@ -5541,3 +5541,8 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-02-24 07:17:54   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-02-24 07:19:26   Nu  Error:  subscript out of bounds 
