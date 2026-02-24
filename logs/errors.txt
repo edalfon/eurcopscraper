@@ -5528,3 +5528,12 @@ Caused by error:
                      (right here) ------^
  
 2026-02-23 21:59:26   Nu  Error:  subscript out of bounds 
+2026-02-24 02:54:31   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5242 ms: Connection timed out 
+2026-02-24 02:55:13   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-02-24 02:56:42   Nu  Error:  subscript out of bounds 
+2026-02-24 02:57:00   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
