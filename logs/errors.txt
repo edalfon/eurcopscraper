@@ -5604,3 +5604,8 @@ Caused by error:
                      (right here) ------^
  
 2026-02-25 16:16:54   Nu  Error:  subscript out of bounds 
+2026-02-25 19:19:13   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-02-25 19:21:17   Comdirect  Error:  'Error caughtError: net::ERR_SSL_PROTOCOL_ERROR at https://commander.commerzbank.com/efx-rates/pages/de/fixing-rates-other.html' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
