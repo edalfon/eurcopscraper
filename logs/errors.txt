@@ -5650,3 +5650,10 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-02-26 21:41:44   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-02-26 21:43:31   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
