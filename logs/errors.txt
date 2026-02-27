@@ -5700,3 +5700,9 @@ Caused by error:
 2026-02-27 15:51:30   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-02-27 18:59:15   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5243 ms: Connection timed out 
+2026-02-27 18:59:52   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-02-27 19:01:24   Nu  Error:  subscript out of bounds 
