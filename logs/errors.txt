@@ -5821,3 +5821,7 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-03-03 04:56:00   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
