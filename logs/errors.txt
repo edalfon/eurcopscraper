@@ -5880,3 +5880,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-03-04 15:55:45   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
