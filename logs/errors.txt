@@ -5892,3 +5892,8 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-03-05 02:49:55   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-03-05 02:51:25   Nu  Error:  subscript out of bounds 
