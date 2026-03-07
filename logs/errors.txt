@@ -5985,3 +5985,9 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-03-07 13:07:06   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5250 ms: Connection timed out 
+2026-03-07 13:07:44   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-03-07 13:09:21   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
