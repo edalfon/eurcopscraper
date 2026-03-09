@@ -6055,3 +6055,8 @@ Caused by error:
                      (right here) ------^
  
 2026-03-09 10:06:14   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-03-09 13:26:23   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-03-09 13:27:56   Nu  Error:  subscript out of bounds 
