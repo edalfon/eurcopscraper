@@ -6199,3 +6199,7 @@ Caused by error:
  
 2026-03-12 21:44:40   Master  Error:  subscript out of bounds 
 2026-03-12 21:45:34   Nu  Error:  subscript out of bounds 
+2026-03-13 02:49:33   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
