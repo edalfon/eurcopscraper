@@ -6320,3 +6320,8 @@ Caused by error:
                      (right here) ------^
  
 2026-03-16 07:47:23   Nu  Error:  subscript out of bounds 
+2026-03-16 10:13:43   Visa  Error:  lexical error: invalid char in json text.
+                                       Web server is returning an unkn
+                     (right here) ------^
+ 
+2026-03-16 10:15:13   Nu  Error:  subscript out of bounds 
