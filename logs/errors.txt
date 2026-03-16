@@ -6310,3 +6310,7 @@ Caused by error:
                      (right here) ------^
  
 2026-03-15 21:40:57   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-03-16 03:30:10   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
