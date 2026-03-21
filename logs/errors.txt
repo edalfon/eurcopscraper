@@ -6492,3 +6492,9 @@ Caused by error:
                      (right here) ------^
  
 2026-03-21 04:48:12   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-03-21 07:00:14   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-03-21 07:01:44   Nu  Error:  subscript out of bounds 
+2026-03-21 07:02:15   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
