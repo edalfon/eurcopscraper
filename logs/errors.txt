@@ -6828,3 +6828,8 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-03-31 07:42:47   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-03-31 07:44:20   Nu  Error:  subscript out of bounds 
