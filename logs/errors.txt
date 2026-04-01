@@ -6875,3 +6875,10 @@ Caused by error:
                      (right here) ------^
  
 2026-04-01 14:01:45   Nu  Error:  subscript out of bounds 
+2026-04-01 16:11:46   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5346 ms: Connection timed out 
+2026-04-01 16:11:55   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-01 16:13:28   Nu  Error:  subscript out of bounds 
+2026-04-01 16:13:35   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
