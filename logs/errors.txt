@@ -7033,3 +7033,11 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-05 21:42:59   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5344 ms: Connection timed out 
+2026-04-05 21:43:38   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-04-05 21:45:23   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
