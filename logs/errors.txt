@@ -7059,3 +7059,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-06 15:58:26   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
