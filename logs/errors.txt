@@ -7203,3 +7203,9 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-10 19:09:03   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-10 19:10:34   Nu  Error:  subscript out of bounds 
+2026-04-10 19:10:39   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
