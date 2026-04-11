@@ -7245,3 +7245,7 @@ Caused by error:
                      (right here) ------^
  
 2026-04-11 19:04:02   Condor  Error:  'Error caughtError: Execution context was destroyed, most likely because of a navigation.' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-04-11 21:45:44   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
