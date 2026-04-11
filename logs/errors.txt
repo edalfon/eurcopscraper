@@ -7217,3 +7217,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-11 07:16:00   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-11 07:17:33   Nu  Error:  subscript out of bounds 
