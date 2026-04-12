@@ -7268,3 +7268,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-12 15:49:01   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5258 ms: Connection timed out 
+2026-04-12 15:49:10   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
