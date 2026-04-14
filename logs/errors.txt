@@ -7329,3 +7329,7 @@ Caused by error:
                      (right here) ------^
  
 2026-04-14 08:03:18   Nu  Error:  subscript out of bounds 
+2026-04-14 10:24:57   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
