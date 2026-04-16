@@ -7402,3 +7402,8 @@ Caused by error:
                      (right here) ------^
  
 2026-04-16 14:11:45   Nu  Error:  subscript out of bounds 
+2026-04-16 16:45:44   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-16 16:47:15   Nu  Error:  subscript out of bounds 
