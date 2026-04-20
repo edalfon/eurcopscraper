@@ -7537,3 +7537,11 @@ Caused by error:
 2026-04-20 10:59:16   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-04-20 14:08:24   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-20 14:09:54   Nu  Error:  subscript out of bounds 
+2026-04-20 14:10:11   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
