@@ -7553,3 +7553,8 @@ Caused by error:
 2026-04-20 16:21:30   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-04-20 19:21:32   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5299 ms: Connection timed out 
+2026-04-20 19:22:12   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
