@@ -7545,3 +7545,11 @@ Caused by error:
 2026-04-20 14:10:11   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-04-20 16:19:40   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-04-20 16:21:14   Nu  Error:  subscript out of bounds 
+2026-04-20 16:21:30   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
