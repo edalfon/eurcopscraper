@@ -7605,3 +7605,10 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-21 21:55:57   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-21 21:57:44   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
