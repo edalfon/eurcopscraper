@@ -7612,3 +7612,10 @@ Caused by error:
 2026-04-21 21:57:44   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-04-22 03:36:52   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-04-22 03:38:42   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
