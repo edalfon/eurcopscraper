@@ -7779,3 +7779,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-27 08:41:07   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5266 ms: Connection timed out 
+2026-04-27 08:41:17   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
