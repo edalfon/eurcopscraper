@@ -7843,3 +7843,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-04-29 08:33:16   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
