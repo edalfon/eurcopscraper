@@ -7963,3 +7963,11 @@ Caused by error:
                      (right here) ------^
  
 2026-05-02 19:17:30   Nu  Error:  subscript out of bounds 
+2026-05-02 21:56:12   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-05-02 21:57:44   Nu  Error:  subscript out of bounds 
+2026-05-02 21:58:01   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
