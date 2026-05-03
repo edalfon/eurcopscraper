@@ -7978,3 +7978,11 @@ Caused by error:
 2026-05-03 04:08:23   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-05-03 08:12:17   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-05-03 08:13:49   Condor  Error:  'Error caughtError: net::ERR_CONNECTION_REFUSED at http://www.elcondorcambios.com/' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-05-03 08:13:56   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
