@@ -8008,3 +8008,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-05-03 21:56:46   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-05-03 21:58:16   Nu  Error:  subscript out of bounds 
