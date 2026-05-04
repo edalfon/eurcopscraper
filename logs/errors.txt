@@ -8042,3 +8042,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-05-04 22:13:07   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
