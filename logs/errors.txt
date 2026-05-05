@@ -8071,3 +8071,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-05-05 22:11:17   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-05-05 22:12:49   Nu  Error:  subscript out of bounds 
