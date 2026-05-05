@@ -8063,3 +8063,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-05-05 16:59:33   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
