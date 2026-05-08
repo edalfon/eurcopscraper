@@ -8136,3 +8136,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-05-08 03:50:13   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-05-08 03:52:11   Kapital  Error:  Timeout was reached: [cambioskapital.com] Resolving timed out after 10000 milliseconds 
