@@ -8244,3 +8244,9 @@ Caused by error:
                      (right here) ------^
  
 2026-05-11 10:01:14   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-05-11 15:32:58   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5254 ms: Connection timed out 
+2026-05-11 15:33:07   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-05-11 15:34:38   Nu  Error:  subscript out of bounds 
