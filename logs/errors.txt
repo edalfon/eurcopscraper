@@ -8389,3 +8389,7 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-05-16 10:25:46   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
