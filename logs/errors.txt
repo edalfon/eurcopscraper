@@ -8414,3 +8414,8 @@ Caused by error:
                                        www.visa.co.ukPerforming securi
                      (right here) ------^
  
+2026-05-17 08:33:37   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-05-17 08:35:28   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
