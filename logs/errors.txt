@@ -8441,3 +8441,8 @@ Caused by error:
                      (right here) ------^
  
 2026-05-17 22:05:35   Nu  Error:  subscript out of bounds 
+2026-05-18 04:27:12   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-05-18 04:28:44   Nu  Error:  subscript out of bounds 
