@@ -8509,3 +8509,7 @@ Caused by error:
                      (right here) ------^
  
 2026-05-20 22:43:16   Nu  Error:  subscript out of bounds 
+2026-05-21 04:40:12   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
