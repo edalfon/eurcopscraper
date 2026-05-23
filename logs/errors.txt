@@ -8551,3 +8551,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-05-23 04:04:53   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
+2026-05-23 04:06:24   Nu  Error:  subscript out of bounds 
