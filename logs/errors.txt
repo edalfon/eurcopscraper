@@ -8823,3 +8823,7 @@ Caused by error:
  
 2026-06-02 04:59:30   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2026-06-02 05:00:00   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-06-02 10:54:18   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
