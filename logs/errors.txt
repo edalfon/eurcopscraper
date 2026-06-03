@@ -8851,3 +8851,8 @@ Caused by error:
                      (right here) ------^
  
 2026-06-03 11:24:37   Nu  Error:  subscript out of bounds 
+2026-06-03 17:08:54   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5251 ms: Connection timed out 
+2026-06-03 17:09:32   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
