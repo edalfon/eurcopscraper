@@ -8927,3 +8927,7 @@ Caused by error:
                      (right here) ------^
  
 2026-06-06 08:48:35   Nu  Error:  subscript out of bounds 
+2026-06-06 11:00:09   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
