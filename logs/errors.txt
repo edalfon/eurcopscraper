@@ -9076,3 +9076,9 @@ Caused by error:
  
 2026-06-11 10:58:20   Nu  Error:  subscript out of bounds 
 2026-06-11 10:58:25   Condor  Error:  'Error caughtError: Execution context was destroyed, most likely because of a navigation.' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-06-11 16:19:08   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5265 ms: Connection timed out 
+2026-06-11 16:19:47   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-11 16:21:18   Nu  Error:  subscript out of bounds 
