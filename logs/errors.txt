@@ -9063,3 +9063,10 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-06-11 04:54:46   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5266 ms: Connection timed out 
+2026-06-11 04:55:26   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-11 04:56:59   Nu  Error:  subscript out of bounds 
+2026-06-11 04:57:06   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
