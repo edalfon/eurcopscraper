@@ -9160,3 +9160,8 @@ Caused by error:
                      (right here) ------^
  
 2026-06-14 14:26:49   Nu  Error:  subscript out of bounds 
+2026-06-14 16:46:22   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-14 16:47:54   Nu  Error:  subscript out of bounds 
