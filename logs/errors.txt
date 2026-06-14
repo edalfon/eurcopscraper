@@ -9169,3 +9169,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-06-14 22:20:57   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-14 22:22:28   Nu  Error:  subscript out of bounds 
