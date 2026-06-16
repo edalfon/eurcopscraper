@@ -9199,3 +9199,8 @@ Caused by error:
                      (right here) ------^
  
 2026-06-16 05:28:32   Nu  Error:  subscript out of bounds 
+2026-06-16 11:31:48   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-16 11:33:24   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
