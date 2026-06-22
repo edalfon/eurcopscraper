@@ -9355,3 +9355,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-06-22 12:23:55   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
