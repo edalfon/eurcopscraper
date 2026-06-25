@@ -9435,3 +9435,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-06-25 14:52:36   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-25 14:53:15   Master  Error:  subscript out of bounds 
