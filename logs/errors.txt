@@ -9546,3 +9546,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-06-28 22:12:40   Visa  Error:  lexical error: invalid char in json text.
+                                       www.visa.co.ukPerforming securi
+                     (right here) ------^
+ 
