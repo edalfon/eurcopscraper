@@ -9530,3 +9530,8 @@ Caused by error:
 2026-06-28 09:31:16   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-06-28 14:10:43   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-06-28 14:12:23   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
