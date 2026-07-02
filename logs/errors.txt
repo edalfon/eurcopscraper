@@ -9629,3 +9629,8 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-07-02 04:17:25   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-07-02 04:19:01   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
