@@ -9753,3 +9753,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-07-06 15:54:00   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
