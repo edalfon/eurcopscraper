@@ -9783,3 +9783,8 @@ Caused by error:
                      (right here) ------^
  
 2026-07-07 15:12:03   Nu  Error:  subscript out of bounds 
+2026-07-07 20:11:02   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-07-07 20:12:30   Nu  Error:  subscript out of bounds 
