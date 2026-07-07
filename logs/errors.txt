@@ -9777,3 +9777,9 @@ Caused by error:
  
 2026-07-07 10:01:58   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2026-07-07 10:02:29   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-07-07 15:09:52   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5231 ms: Connection timed out 
+2026-07-07 15:10:31   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-07-07 15:12:03   Nu  Error:  subscript out of bounds 
