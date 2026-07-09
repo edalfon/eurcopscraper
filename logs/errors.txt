@@ -9833,3 +9833,7 @@ Caused by error:
                      (right here) ------^
  
 2026-07-09 09:58:03   Nu  Error:  subscript out of bounds 
+2026-07-09 15:33:05   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
