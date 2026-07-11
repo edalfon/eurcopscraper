@@ -9879,3 +9879,7 @@ Caused by error:
  
 2026-07-10 22:16:23   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2026-07-10 22:16:40   Kapital  Error:  Timeout was reached: [cambioskapital.com] SSL connection timeout 
+2026-07-11 03:35:57   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
