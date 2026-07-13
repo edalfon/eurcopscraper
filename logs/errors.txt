@@ -9950,3 +9950,8 @@ Caused by error:
                      (right here) ------^
  
 2026-07-13 03:53:00   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-07-13 09:46:19   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-07-13 09:47:56   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
