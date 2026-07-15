@@ -10023,3 +10023,7 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-07-15 14:04:46   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
