@@ -10181,3 +10181,9 @@ Caused by error:
  
 2026-07-20 09:34:36   Nu  Error:  subscript out of bounds 
 2026-07-20 09:35:07   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-07-20 14:29:14   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-07-20 14:30:45   Nu  Error:  subscript out of bounds 
+2026-07-20 14:30:52   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
