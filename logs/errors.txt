@@ -10433,3 +10433,7 @@ Caused by error:
  
 2026-07-27 22:17:45   Nu  Error:  subscript out of bounds 
 2026-07-27 22:18:02   Kapital  Error:  Failed to connect to cambioskapital.com port 443 after 261 ms: Connection refused 
+2026-07-28 03:30:48   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
