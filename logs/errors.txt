@@ -10648,3 +10648,9 @@ Caused by error:
                                    400 Bad Request
                      (right here) ------^
  
+2026-08-03 19:51:01   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5229 ms: Connection timed out 
+2026-08-03 19:51:39   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-08-03 19:53:16   Condor  Error:  'Error caughtError: Execution context was destroyed, most likely because of a navigation.' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
