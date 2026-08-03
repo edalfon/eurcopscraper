@@ -10633,3 +10633,10 @@ Caused by error:
                      (right here) ------^
  
 2026-08-02 22:07:31   Nu  Error:  subscript out of bounds 
+2026-08-03 03:47:38   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5249 ms: Connection timed out 
+2026-08-03 03:48:15   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-08-03 03:49:53   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-08-03 03:50:23   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
