@@ -11021,3 +11021,9 @@ Caused by error:
                      (right here) ------^
  
 2026-08-13 22:00:10   Condor  Error:  'Error caughtError: Execution context was destroyed, most likely because of a navigation.' does not exist in current working directory ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-08-14 02:37:47   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5251 ms: Connection timed out 
+2026-08-14 02:38:24   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-08-14 02:40:02   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
