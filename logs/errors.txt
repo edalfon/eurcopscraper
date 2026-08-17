@@ -11143,3 +11143,11 @@ Caused by error:
 2026-08-16 18:44:56   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-08-17 01:52:15   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-08-17 01:53:52   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-08-17 01:54:01   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
