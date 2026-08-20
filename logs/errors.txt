@@ -11265,3 +11265,10 @@ Caused by error:
                      (right here) ------^
  
 2026-08-20 01:49:51   Nu  Error:  subscript out of bounds 
+2026-08-20 03:55:13   Vancouver  Error:  Timeout was reached: [cambiosvancouver.com] Failed to connect to cambiosvancouver.com port 443 after 5245 ms: Connection timed out 
+2026-08-20 03:55:51   Visa  Error:  parse error: trailing garbage
+                                   400 Bad Request
+                     (right here) ------^
+ 
+2026-08-20 03:56:32   Master  Error:  subscript out of bounds 
+2026-08-20 03:57:20   Nu  Error:  subscript out of bounds 
