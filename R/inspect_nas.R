@@ -2,7 +2,8 @@ inspect_nas <- function() {
   data_wide <- ingest_all_rds() |>
     dplyr::select(timestamp, source, rate) |>
     dplyr::summarise(
-      n = dplyr::n(), rate = mean(rate, na.rm = TRUE),
+      n = dplyr::n(),
+      rate = mean(rate, na.rm = TRUE),
       .by = c(timestamp, source)
     ) |>
     # dplyr::summarise(
@@ -10,6 +11,13 @@ inspect_nas <- function() {
     #   .by = c(timestamp, source)
     # ) |>
     # dplyr::filter(n > 1L)
+    # `n` must be dropped before pivoting: pivot_wider() treats any column
+    # not in names_from/values_from as part of the row identity, so leaving
+    # it in silently fragments a timestamp into multiple rows whenever one
+    # source has a different duplicate-count than another at that instant
+    # (e.g. a source that returned 2 near-identical scraped rows) -- which
+    # is exactly what made freshly-filled Visa rows look "still missing".
+    dplyr::select(-n) |>
     tidyr::pivot_wider(names_from = source, values_from = rate)
 
   data_wide
@@ -44,9 +52,16 @@ fillin_visa <- function(max_dates = 15, min_sleep = 8, max_sleep = 20) {
 
   dates_na <- sort(unique(visa_na$date), decreasing = TRUE)
   n_missing <- length(dates_na)
+  cat("Found", n_missing, "missing Visa date(s)\n")
   dates_na <- utils::head(dates_na, max_dates)
 
-  cat("Filling in up to", length(dates_na), "of", n_missing, "missing Visa date(s)\n")
+  cat(
+    "Filling in up to",
+    length(dates_na),
+    "of",
+    n_missing,
+    "missing Visa date(s)\n"
+  )
 
   rows <- vector("list", length(dates_na))
   for (i in seq_along(dates_na)) {
@@ -55,11 +70,17 @@ fillin_visa <- function(max_dates = 15, min_sleep = 8, max_sleep = 20) {
 
     result <- tryCatch(
       list(rate = visa(d), status = NA_integer_, msg = NA_character_),
-      error = function(e) list(
-        rate = NA_real_,
-        status = if (!is.null(e$resp)) httr2::resp_status(e$resp) else NA_integer_,
-        msg = conditionMessage(e)
-      )
+      error = function(e) {
+        list(
+          rate = NA_real_,
+          status = if (!is.null(e$resp)) {
+            httr2::resp_status(e$resp)
+          } else {
+            NA_integer_
+          },
+          msg = conditionMessage(e)
+        )
+      }
     )
 
     if (!is.na(result$rate)) {
@@ -70,7 +91,9 @@ fillin_visa <- function(max_dates = 15, min_sleep = 8, max_sleep = 20) {
     rows[[i]] <- data.frame(date = d, rate_fillin = result$rate)
 
     if (!is.na(result$status) && result$status == 403L) {
-      cat("Got a 403 (blocked) -- stopping this run early rather than pushing through more requests.\n")
+      cat(
+        "Got a 403 (blocked) -- stopping this run early rather than pushing through more requests.\n"
+      )
       break
     }
     Sys.sleep(stats::runif(1, min_sleep, max_sleep))
@@ -79,14 +102,24 @@ fillin_visa <- function(max_dates = 15, min_sleep = 8, max_sleep = 20) {
   visa_to_fillin <- dplyr::bind_rows(rows)
 
   visa_df <- visa_na |>
-    dplyr::left_join(visa_to_fillin |> dplyr::mutate(date = as.Date(date)), by = "date") |>
+    dplyr::left_join(
+      visa_to_fillin |> dplyr::mutate(date = as.Date(date)),
+      by = "date"
+    ) |>
     dplyr::filter(!is.na(rate_fillin)) |>
     dplyr::select(timestamp, visa_rate = rate_fillin)
 
   if (nrow(visa_df) > 0) {
     appendRDS("data/visa.rds", visa_df)
+    cat(
+      "Filled in",
+      nrow(visa_df),
+      "Visa rate(s) and appended to data/visa.rds\n"
+    )
   } else {
-    cat("Nothing fetched successfully this run, data/visa.rds left untouched.\n")
+    cat(
+      "Nothing fetched successfully this run, data/visa.rds left untouched.\n"
+    )
   }
 
   invisible(visa_df)
