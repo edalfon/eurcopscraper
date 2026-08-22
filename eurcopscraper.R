@@ -15,8 +15,14 @@ try_and_log_error(msg = "Vancouver", {
 # from github servers or something (already tried user agent and other headers)
 # update: fixed it by using puppeteer, so let it fail_stamp again
 # well, not exactly, cloudflare is still blocking it
+# update 2026-08-22: puppeteer itself started getting blocked (400 trailing
+# garbage errors) since 2025-09-15. A plain httr2 request now works again
+# (verified from a residential IP), so try that first since it's simpler and
+# faster, falling back to puppeteer in case the CI runner's IP is still
+# blocked and the direct approach only works from non-datacenter IPs.
+# fail_stamp stays FALSE until we confirm from CI logs that this is reliable.
 try_and_log_error(msg = "Visa", fail_stamp = FALSE, {
-  visa_rate <- visa_puppeteer()
+  visa_rate <- tryCatch(visa(), error = function(e) visa_puppeteer())
   visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
   appendRDS("data/visa.rds", visa_df)
 })
