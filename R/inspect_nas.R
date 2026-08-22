@@ -1,3 +1,8 @@
+#' Build a wide (timestamp x source) view of all scraped rates
+#'
+#' See README.md ("Gotcha: inspect_nas() / pivot_wider() and the n column")
+#' before touching the summarise/pivot_wider pipeline below -- it has
+#' already broken fillin_visa() once in a very confusing way.
 inspect_nas <- function() {
   data_wide <- ingest_all_rds() |>
     dplyr::select(timestamp, source, rate) |>
@@ -26,11 +31,12 @@ inspect_nas <- function() {
 
 #' Backfill missing Visa rates, a few dates at a time
 #'
-#' Visa is disabled in the CI scraper (Cloudflare blocks the GitHub Actions
-#' runner IP), so gaps in data/visa.rds have to be filled in by running this
-#' locally, from home, every so often. Run it repeatedly (e.g. once a day) to
-#' gradually work through the backlog. Two things it does to stay polite,
-#' learned by testing directly against the API:
+#' See README.md ("Known issue: Visa is not scraped by CI") for the full
+#' story. Visa is disabled in the CI scraper (Cloudflare blocks the GitHub
+#' Actions runner IP), so gaps in data/visa.rds have to be filled in by
+#' running this locally, from home, every so often. Run it repeatedly (e.g.
+#' once a day) to gradually work through the backlog. Two things it does
+#' to stay polite, learned by testing directly against the API:
 #' - Tries the *newest* missing dates first. Visa's API only serves roughly
 #'   the last year of history; older dates come back with a permanent 400
 #'   (not a block), so oldest-first would waste every single run retrying
