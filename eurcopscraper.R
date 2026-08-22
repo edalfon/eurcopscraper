@@ -16,13 +16,30 @@ try_and_log_error(msg = "Vancouver", {
 # update: fixed it by using puppeteer, so let it fail_stamp again
 # well, not exactly, cloudflare is still blocking it
 # update 2026-08-22: puppeteer itself started getting blocked (400 trailing
-# garbage errors) since 2025-09-15. A plain httr2 request now works again
-# (verified from a residential IP), so try that first since it's simpler and
-# faster, falling back to puppeteer in case the CI runner's IP is still
-# blocked and the direct approach only works from non-datacenter IPs.
+# garbage errors) since 2025-09-15. A plain httr2 request works fine when
+# tested from a residential IP, but still fails from the CI runner (tried
+# 2026-08-22, run 32580767817) with the same trailing-garbage/400 as
+# puppeteer -- so try it first (cheap), but log exactly how it fails before
+# falling back to puppeteer, since that error was previously being swallowed.
 # fail_stamp stays FALSE until we confirm from CI logs that this is reliable.
 try_and_log_error(msg = "Visa", fail_stamp = FALSE, {
-  visa_rate <- tryCatch(visa(), error = function(e) visa_puppeteer())
+  visa_rate <- tryCatch(
+    visa(),
+    error = function(e) {
+      cat("visa() (direct httr2) failed, falling back to puppeteer:\n")
+      cat("  class:", paste(class(e), collapse = ", "), "\n")
+      cat("  message:", conditionMessage(e), "\n")
+      if (!is.null(e$resp)) {
+        cat("  http status:", httr2::resp_status(e$resp), "\n")
+        body_preview <- tryCatch(
+          substr(httr2::resp_body_string(e$resp), 1, 500),
+          error = function(e2) "<no body>"
+        )
+        cat("  body preview:", body_preview, "\n")
+      }
+      visa_puppeteer()
+    }
+  )
   visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
   appendRDS("data/visa.rds", visa_df)
 })
