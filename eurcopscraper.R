@@ -10,39 +10,14 @@ try_and_log_error(msg = "Vancouver", {
   appendRDS("data/vancouver.rds", vancouver_df)
 })
 
-# there are issues with visa, basically a 403 forbidden error
-# there must be some sort of rate-limit going on, that applies to the IP address
-# from github servers or something (already tried user agent and other headers)
-# update: fixed it by using puppeteer, so let it fail_stamp again
-# well, not exactly, cloudflare is still blocking it
-# update 2026-08-22: puppeteer itself started getting blocked (400 trailing
-# garbage errors) since 2025-09-15. A plain httr2 request works fine when
-# tested from a residential IP, but still fails from the CI runner (tried
-# 2026-08-22, run 32580767817) with the same trailing-garbage/400 as
-# puppeteer -- so try it first (cheap), but log exactly how it fails before
-# falling back to puppeteer, since that error was previously being swallowed.
-# fail_stamp stays FALSE until we confirm from CI logs that this is reliable.
-try_and_log_error(msg = "Visa", fail_stamp = FALSE, {
-  visa_rate <- tryCatch(
-    visa(),
-    error = function(e) {
-      cat("visa() (direct httr2) failed, falling back to puppeteer:\n")
-      cat("  class:", paste(class(e), collapse = ", "), "\n")
-      cat("  message:", conditionMessage(e), "\n")
-      if (!is.null(e$resp)) {
-        cat("  http status:", httr2::resp_status(e$resp), "\n")
-        body_preview <- tryCatch(
-          substr(httr2::resp_body_string(e$resp), 1, 500),
-          error = function(e2) "<no body>"
-        )
-        cat("  body preview:", body_preview, "\n")
-      }
-      visa_puppeteer()
-    }
-  )
-  visa_df <- data.frame(visa_rate = visa_rate, timestamp = timestamp)
-  appendRDS("data/visa.rds", visa_df)
-})
+# Visa is disabled here: Cloudflare 403-blocks (JS challenge page) both a
+# plain httr2 request and a puppeteer headless browser when they come from
+# the GitHub Actions runner IP range, while both work fine from a residential
+# IP (confirmed 2026-08-22, CI run 32581446115 got HTTP 403 + "Just a
+# moment..." challenge body from visa(), and a 400 from visa_puppeteer()).
+# Self-hosting a runner just for this wasn't worth the complexity, so instead
+# gaps are backfilled locally, from home, via fillin_visa() in
+# R/inspect_nas.R -- run that manually/periodically instead of relying on CI.
 
 try_and_log_error(msg = "Master", {
   master_rate <- master_puppeteer()
