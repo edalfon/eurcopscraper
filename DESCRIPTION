@@ -8,21 +8,24 @@ Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
-Imports: 
+Imports:
     dplyr,
     dygraphs,
-    httr,
+    httr2,
     janitor,
     jsonlite,
-    lubridate,
+    knitr,
     purrr,
     quarto,
     readr,
     renv,
+    rlang,
     rmarkdown,
     rvest,
+    stats,
     stringr,
     tidyr,
     utils,
+    vctrs,
     xml2,
     xts
