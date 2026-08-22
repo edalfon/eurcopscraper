@@ -18,7 +18,7 @@ try_and_log_error(msg = "Vancouver", {
 # Self-hosting a runner just for this wasn't worth the complexity, so instead
 # gaps are backfilled locally, from home, via fillin_visa() in
 # R/inspect_nas.R -- run that manually/periodically instead of relying on CI.
-# See README.md ("Known issue: Visa is not scraped by CI") for the full story.
+# See NEWS.md ("Visa disabled in CI, backfilled locally via fillin_visa()") for the full story.
 
 try_and_log_error(msg = "Master", {
   master_rate <- master_puppeteer()

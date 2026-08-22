@@ -1,6 +1,6 @@
 #' Build a wide (timestamp x source) view of all scraped rates
 #'
-#' See README.md ("Gotcha: inspect_nas() / pivot_wider() and the n column")
+#' See NEWS.md ("Gotcha: inspect_nas() / pivot_wider() and the n column")
 #' before touching the summarise/pivot_wider pipeline below -- it has
 #' already broken fillin_visa() once in a very confusing way.
 inspect_nas <- function() {
@@ -31,7 +31,7 @@ inspect_nas <- function() {
 
 #' Backfill missing Visa rates, a few dates at a time
 #'
-#' See README.md ("Known issue: Visa is not scraped by CI") for the full
+#' See NEWS.md ("Visa disabled in CI, backfilled locally via fillin_visa()") for the full
 #' story. Visa is disabled in the CI scraper (Cloudflare blocks the GitHub
 #' Actions runner IP), so gaps in data/visa.rds have to be filled in by
 #' running this locally, from home, every so often. Run it repeatedly (e.g.
