@@ -22,7 +22,7 @@ condor <- function() {
     # janitor::clean_names() |>
 
     dplyr::mutate(dplyr::across(c(compra, venta), .fns = ~ .x |>
-      gsub(.x, pattern = ",", replacement = "") |>
+      gsub(pattern = ",", replacement = "") |>
       gsub(pattern = "\\$", replacement = "") |>
       stringr::str_trim() |>
       as.numeric()))

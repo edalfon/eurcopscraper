@@ -18,7 +18,7 @@ vancouver <- function() {
     dplyr::mutate(dplyr::across(
       .cols = dplyr::everything(),
       .fns = ~ .x |>
-        gsub(.x, pattern = ",", replacement = "") |>
+        gsub(pattern = ",", replacement = "") |>
         gsub(pattern = "\\.", replacement = "") |>
         gsub(pattern = "\\$", replacement = "") |>
         stringr::str_trim()
