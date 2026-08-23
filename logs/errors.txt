@@ -11397,3 +11397,7 @@ Caused by error in `gsub()`:
 2026-08-23 09:39:20   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does
 not exist in current working directory
 ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-08-23 12:58:53   Nu  Error:  subscript out of bounds 
+2026-08-23 12:59:11   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
