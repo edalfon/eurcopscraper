@@ -11394,3 +11394,6 @@ Caused by error in `gsub()`:
 2026-08-22 19:58:35   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2026-08-22 21:32:44   Nu  Error:  subscript out of bounds 
 2026-08-23 03:58:59   Nu  Error:  subscript out of bounds 
+2026-08-23 09:39:20   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does
+not exist in current working directory
+('/home/runner/work/eurcopscraper/eurcopscraper'). 
