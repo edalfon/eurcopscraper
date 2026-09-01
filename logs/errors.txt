@@ -11455,3 +11455,4 @@ Caused by error:
 2026-09-01 08:36:23   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does
 not exist in current working directory
 ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-09-01 14:10:40   Nu  Error:  subscript out of bounds 
