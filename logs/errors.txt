@@ -11460,3 +11460,5 @@ not exist in current working directory
 2026-09-01 23:17:05   Nu  Error:  subscript out of bounds 
 2026-09-02 04:20:34   Nu  Error:  subscript out of bounds 
 2026-09-02 11:12:04   Nu  Error:  subscript out of bounds 
+2026-09-02 23:16:22   Vancouver  Error:  cannot open the connection 
+2026-09-02 23:18:02   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
