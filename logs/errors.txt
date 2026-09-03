@@ -11467,3 +11467,4 @@ not exist in current working directory
 2026-09-03 11:08:15   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-09-03 16:22:20   Nu  Error:  subscript out of bounds 
