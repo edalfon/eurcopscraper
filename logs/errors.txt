@@ -11484,3 +11484,6 @@ Caused by error:
 2026-09-06 04:25:52   Vancouver  Error:  cannot open the connection 
 2026-09-06 10:50:53   Nu  Error:  subscript out of bounds 
 2026-09-06 15:25:36   Nu  Error:  subscript out of bounds 
+2026-09-06 20:23:21   Condor  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does
+not exist in current working directory
+('/home/runner/work/eurcopscraper/eurcopscraper'). 
