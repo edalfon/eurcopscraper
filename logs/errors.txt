@@ -11498,3 +11498,4 @@ not exist in current working directory
 2026-09-09 04:31:41   Condor  Error:  'Error caughtError: Execution context was destroyed, most likely because
 of a navigation.' does not exist in current working directory
 ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-09-09 11:14:11   Nu  Error:  subscript out of bounds 
