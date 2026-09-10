@@ -11503,3 +11503,4 @@ of a navigation.' does not exist in current working directory
 2026-09-09 23:11:31   Nu  Error:  subscript out of bounds 
 2026-09-10 04:29:33   Nu  Error:  subscript out of bounds 
 2026-09-10 04:29:40   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
+2026-09-10 20:49:49   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
