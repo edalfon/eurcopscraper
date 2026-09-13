@@ -11518,3 +11518,4 @@ not exist in current working directory
 Caused by error:
 ! object 'iso' not found 
 2026-09-13 20:44:24   Nu  Error:  subscript out of bounds 
+2026-09-13 23:08:04   Nu  Error:  subscript out of bounds 
