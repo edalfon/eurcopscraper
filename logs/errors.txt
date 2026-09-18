@@ -11533,3 +11533,4 @@ Caused by error:
 2026-09-17 21:19:58   Comdirect  Error:  'Error caughtTimeoutError: Navigation timeout of 30000 ms exceeded' does
 not exist in current working directory
 ('/home/runner/work/eurcopscraper/eurcopscraper'). 
+2026-09-18 04:33:31   Nu  Error:  subscript out of bounds 
