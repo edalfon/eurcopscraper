@@ -11569,3 +11569,4 @@ Caused by error:
 Caused by error:
 ! object 'iso' not found 
 2026-10-01 05:41:38   Nu  Error:  subscript out of bounds 
+2026-10-01 13:03:44   Nu  Error:  subscript out of bounds 
