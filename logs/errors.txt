@@ -11571,3 +11571,5 @@ Caused by error:
 2026-10-01 05:41:38   Nu  Error:  subscript out of bounds 
 2026-10-01 13:03:44   Nu  Error:  subscript out of bounds 
 2026-10-02 17:51:30   Nu  Error:  subscript out of bounds 
+2026-10-03 05:08:33   Vancouver  Error:  cannot open the connection 
+2026-10-03 05:10:05   Nu  Error:  subscript out of bounds 
