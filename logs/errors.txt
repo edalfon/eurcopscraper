@@ -11620,3 +11620,6 @@ Caused by error:
 2026-10-17 15:28:54   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-10-17 20:31:56   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
