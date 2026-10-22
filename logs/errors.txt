@@ -11642,3 +11642,4 @@ Caused by error:
 2026-10-21 21:36:11   Condor  Error:  '' does not exist in current working directory
 ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2026-10-22 11:41:36   Nu  Error:  subscript out of bounds 
+2026-10-22 17:05:31   Nu  Error:  subscript out of bounds 
