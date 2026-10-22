@@ -11643,3 +11643,4 @@ Caused by error:
 ('/home/runner/work/eurcopscraper/eurcopscraper'). 
 2026-10-22 11:41:36   Nu  Error:  subscript out of bounds 
 2026-10-22 17:05:31   Nu  Error:  subscript out of bounds 
+2026-10-22 21:45:45   Nu  Error:  subscript out of bounds 
