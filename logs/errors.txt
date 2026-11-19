@@ -11694,3 +11694,6 @@ Caused by error:
 2026-11-18 11:31:26   Condor  Error:  The size of `nm` (3) must be compatible with the size of `x` (0). 
 2026-11-18 20:25:41   Nu  Error:  subscript out of bounds 
 2026-11-19 02:31:24   Nu  Error:  subscript out of bounds 
+2026-11-19 20:29:41   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
+Caused by error:
+! object 'iso' not found 
