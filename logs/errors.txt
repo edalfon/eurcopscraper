@@ -11711,3 +11711,4 @@ Caused by error:
 2026-11-22 11:07:08   Comdirect  Error:  ℹ In argument: `iso == "COP"`.
 Caused by error:
 ! object 'iso' not found 
+2026-11-23 01:35:30   Nu  Error:  subscript out of bounds 
